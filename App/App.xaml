@@ -1,0 +1,9 @@
+﻿<Application x:Class="Project._04_LineasAutobuses.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Project._04_LineasAutobuses"
+             StartupUri="App.MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
