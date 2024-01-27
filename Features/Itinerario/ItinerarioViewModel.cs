@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project._04_LineasAutobuses.Features.ViewModel
+namespace Project._04_LineasAutobuses.Features.Itinerario
 {
     class ItinerarioViewModel
     {

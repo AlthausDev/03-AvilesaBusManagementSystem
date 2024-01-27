@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Project._04_LineasAutobuses.App
+namespace Project._04_LineasAutobuses
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

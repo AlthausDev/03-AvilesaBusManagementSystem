@@ -15,10 +15,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Features\Itinerario\View\ItinerariosView.xaml.cs">
+    <Page Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Features\Itinerario\ItinerariosView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Features\Linea\View\LineasView.xaml.cs">
+    <Compile Update="Features\Linea\LineasView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
