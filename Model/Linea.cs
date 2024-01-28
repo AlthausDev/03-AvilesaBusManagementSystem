@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project._04_LineasAutobuses.Model
 {
-    internal class Linea
+    public class Linea
     {
         /// <summary>
         /// Representa una línea de autobús.

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project._04_LineasAutobuses.Model
 {
-    internal class Parada
+    public class Parada
     {
         public string Municipio { get; set; }  
     }

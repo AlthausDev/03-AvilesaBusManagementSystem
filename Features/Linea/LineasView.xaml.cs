@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Project._04_LineasAutobuses.Features.View
+namespace Project._04_LineasAutobuses.Features.Linea
 {
     /// <summary>
     /// Lógica de interacción para LineasView.xaml
