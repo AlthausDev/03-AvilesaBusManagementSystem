@@ -10,8 +10,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\" />
-    <Folder Include="Resources\" />
+    <Folder Include="Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="31.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,10 +22,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Features\Itinerario\ItinerariosView.xaml.cs">
+    <Compile Update="Views\ItinerariosView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Features\Linea\LineasView.xaml.cs">
+    <Compile Update="Views\LineasView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

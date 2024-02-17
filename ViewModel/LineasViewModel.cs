@@ -4,13 +4,14 @@ using System.Windows.Input;
 using Project._04_LineasAutobuses.Model;
 using System;
 using Project._04_LineasAutobuses.Utils;
+using Project._04_LineasAutobuses.Commands;
 
-namespace Project._04_LineasAutobuses.Features.Linea
+namespace Project._04_LineasAutobuses.ViewModel
 {
     public class LineaViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<Model.Linea> Lineas { get; set; }
-        public Model.Linea LineaSeleccionada { get; set; }
+        public ObservableCollection<Linea> Lineas { get; set; }
+        public Linea LineaSeleccionada { get; set; }
 
         public ICommand AgregarLineaCommand { get; set; }
         public ICommand ModificarLineaCommand { get; set; }
@@ -20,8 +21,11 @@ namespace Project._04_LineasAutobuses.Features.Linea
         public event PropertyChangedEventHandler PropertyChanged;
 
         public LineaViewModel()
-        {         
-            Lineas = new ObservableCollection<Model.Linea>();
+        {
+            Lineas = new ObservableCollection<Linea>();
+
+            var lineasCsv = new CsvDataService<Linea>("lineas.csv");
+            var lineas = lineasCsv.ReadFromCsv();
 
             AgregarLineaCommand = new RelayCommand(AgregarLinea);
             ModificarLineaCommand = new RelayCommand(ModificarLinea);
@@ -29,26 +33,26 @@ namespace Project._04_LineasAutobuses.Features.Linea
             ConsultarLineasCommand = new RelayCommand(ConsultarLineas);
         }
 
-        
+
         private void AgregarLinea()
         {
-           
-            Lineas.Add(new Model.Linea());
+
+            Lineas.Add(new Linea());
         }
 
-       
+
         private void ModificarLinea()
         {
-            
+
             if (LineaSeleccionada != null)
             {
-               
+
             }
         }
 
         private void EliminarLinea()
         {
-            
+
             if (LineaSeleccionada != null)
             {
                 Lineas.Remove(LineaSeleccionada);
@@ -57,7 +61,7 @@ namespace Project._04_LineasAutobuses.Features.Linea
 
         private void ConsultarLineas()
         {
-            
+
         }
     }
 }

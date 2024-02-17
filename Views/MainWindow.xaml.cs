@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using Project._04_LineasAutobuses.Model;
+using Project._04_LineasAutobuses.Utils;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -18,7 +20,8 @@ namespace Project._04_LineasAutobuses
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();          
+
         }
     }
 }

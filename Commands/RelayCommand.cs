@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Project._04_LineasAutobuses.Utils
+namespace Project._04_LineasAutobuses.Commands
 {
 
     public class RelayCommand : ICommand
