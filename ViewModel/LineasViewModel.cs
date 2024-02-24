@@ -2,22 +2,40 @@
 using System.ComponentModel;
 using System.Windows.Input;
 using Project._04_LineasAutobuses.Model;
-using System;
 using Project._04_LineasAutobuses.Utils;
+using System;
 using Project._04_LineasAutobuses.Commands;
-using System.Collections.Generic;
 
 namespace Project._04_LineasAutobuses.ViewModel
 {
     public class LineaViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<Linea> Lineas { get; set; }
-        public Linea LineaSeleccionada { get; set; }
+        private ObservableCollection<Linea> _lineas;
+        public ObservableCollection<Linea> Lineas
+        {
+            get { return _lineas; }
+            set
+            {
+                _lineas = value;
+                OnPropertyChanged(nameof(Lineas));
+            }
+        }
 
-        public ICommand AgregarLineaCommand { get; set; }
-        public ICommand ModificarLineaCommand { get; set; }
-        public ICommand EliminarLineaCommand { get; set; }
-        public ICommand ConsultarLineasCommand { get; set; }
+        private Linea _lineaSeleccionada;
+        public Linea LineaSeleccionada
+        {
+            get { return _lineaSeleccionada; }
+            set
+            {
+                _lineaSeleccionada = value;
+                OnPropertyChanged(nameof(LineaSeleccionada));
+            }
+        }
+
+        public ICommand AgregarLineaCommand { get; }
+        public ICommand ModificarLineaCommand { get; }
+        public ICommand EliminarLineaCommand { get; }
+        public ICommand ConsultarLineasCommand { get; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -26,49 +44,55 @@ namespace Project._04_LineasAutobuses.ViewModel
             Lineas = LoadLineas();
 
             AgregarLineaCommand = new RelayCommand(AgregarLinea);
-            ModificarLineaCommand = new RelayCommand(ModificarLinea);
-            EliminarLineaCommand = new RelayCommand(EliminarLinea);
+            ModificarLineaCommand = new RelayCommand(ModificarLinea, CanModifyLinea);
+            EliminarLineaCommand = new RelayCommand(EliminarLinea, CanDeleteLinea);
             ConsultarLineasCommand = new RelayCommand(ConsultarLineas);
         }
 
-        private static ObservableCollection<Linea> LoadLineas()
+        private ObservableCollection<Linea> LoadLineas()
         {
-            new ObservableCollection<Linea>();
-
             var lineasCsv = new CsvDataService<Linea>("lineas.csv");
-            var lineas = lineasCsv.ReadFromCsv();
-            return lineas;
+            return lineasCsv.ReadFromCsv();
         }
-
 
         private void AgregarLinea()
         {
-
             Lineas.Add(new Linea());
         }
 
-
         private void ModificarLinea()
         {
+            // Pendiente
+        }
 
-            if (LineaSeleccionada != null)
-            {
-
-            }
+        private bool CanModifyLinea()
+        {
+            //Pendiente
+            return LineaSeleccionada != null;
         }
 
         private void EliminarLinea()
         {
-
             if (LineaSeleccionada != null)
             {
                 Lineas.Remove(LineaSeleccionada);
             }
         }
 
+        private bool CanDeleteLinea()
+        {
+            // Pendiente
+            return LineaSeleccionada != null;
+        }
+
         private void ConsultarLineas()
         {
+            // Pendiente
+        }
 
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

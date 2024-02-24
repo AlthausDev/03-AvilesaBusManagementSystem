@@ -1,22 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Project._04_LineasAutobuses.Model
 {
     public class Itinerario : IEditableObject, INotifyPropertyChanged
     {
+        private int _id;
+        public int Id
+        {
+            get { return _id; }
+            set
+            {
+                if (_id != value)
+                {
+                    _id = value;
+                    OnPropertyChanged(nameof(Id));
+                }
+            }
+        }
 
-        /// <summary>
-        /// Representa un itinerario de una línea de autobús.
-        /// </summary>
+        private Dictionary<int, string> _municipios;
+        public Dictionary<int, string> Municipios
+        {
+            get { return _municipios; }
+            set
+            {
+                if (_municipios != value)
+                {
+                    _municipios = value;
+                    OnPropertyChanged(nameof(Municipios));
+                }
+            }
+        }
 
-        private int Id { get; set; }
-        private Dictionary <int, String> Municipios { get; set; }
-        private TimeSpan IntervaloDesdeSalida { get; set; }       
+        private TimeSpan _intervaloDesdeSalida;
+        public TimeSpan IntervaloDesdeSalida
+        {
+            get { return _intervaloDesdeSalida; }
+            set
+            {
+                if (_intervaloDesdeSalida != value)
+                {
+                    _intervaloDesdeSalida = value;
+                    OnPropertyChanged(nameof(IntervaloDesdeSalida));
+                }
+            }
+        }
 
         public Itinerario()
         {
@@ -27,21 +57,19 @@ namespace Project._04_LineasAutobuses.Model
             Id = id;
             Municipios = municipios;
             IntervaloDesdeSalida = intervaloDesdeSalida;
-
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        private Itinerario BackupCopy;
-        private bool inEdit;
+        private Itinerario _backupCopy;
+        private bool _inEdit;
 
         public void BeginEdit()
         {
-            if(!inEdit)
+            if (!_inEdit)
             {
-                BackupCopy = this.MemberwiseClone() as Itinerario;
-                inEdit = true;
+                _backupCopy = this.MemberwiseClone() as Itinerario;
+                _inEdit = true;
             }
         }
 
@@ -52,11 +80,16 @@ namespace Project._04_LineasAutobuses.Model
 
         public void EndEdit()
         {
-            if (inEdit)
+            if (_inEdit)
             {
-                BackupCopy = null;
-                inEdit = false;
+                _backupCopy = null;
+                _inEdit = false;
             }
+        }
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
