@@ -5,6 +5,7 @@ using Project._04_LineasAutobuses.Model;
 using System;
 using Project._04_LineasAutobuses.Utils;
 using Project._04_LineasAutobuses.Commands;
+using System.Collections.Generic;
 
 namespace Project._04_LineasAutobuses.ViewModel
 {
@@ -22,15 +23,21 @@ namespace Project._04_LineasAutobuses.ViewModel
 
         public LineaViewModel()
         {
-            Lineas = new ObservableCollection<Linea>();
-
-            var lineasCsv = new CsvDataService<Linea>("lineas.csv");
-            var lineas = lineasCsv.ReadFromCsv();
+            Lineas = LoadLineas();
 
             AgregarLineaCommand = new RelayCommand(AgregarLinea);
             ModificarLineaCommand = new RelayCommand(ModificarLinea);
             EliminarLineaCommand = new RelayCommand(EliminarLinea);
             ConsultarLineasCommand = new RelayCommand(ConsultarLineas);
+        }
+
+        private static ObservableCollection<Linea> LoadLineas()
+        {
+            new ObservableCollection<Linea>();
+
+            var lineasCsv = new CsvDataService<Linea>("lineas.csv");
+            var lineas = lineasCsv.ReadFromCsv();
+            return lineas;
         }
 
 

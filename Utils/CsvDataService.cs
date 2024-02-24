@@ -2,6 +2,7 @@
 using CsvHelper.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -32,20 +33,20 @@ namespace Project._04_LineasAutobuses.Utils
             };
         }
 
-        public List<T> ReadFromCsv()
+        public ObservableCollection<T> ReadFromCsv()
         {
             try
             {
                 using (var reader = new StreamReader(FilePath, Encoding.UTF8))
                 using (var csv = new CsvReader(reader, Configuration))
                 {
-                    return csv.GetRecords<T>().ToList();
+                    return (ObservableCollection<T>) csv.GetRecords<T>();
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al leer desde el archivo CSV {FilePath}: {ex.Message}");
-                return new List<T>();
+                return new ObservableCollection<T>();
             }
         }
 
