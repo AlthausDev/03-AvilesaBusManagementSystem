@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project._04_LineasAutobuses"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="720" Width="1280"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Background="Transparent"
@@ -29,7 +29,7 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="150"/>  
+                <ColumnDefinition Width="200"/>  
                 <ColumnDefinition Width="*"/>    
             </Grid.ColumnDefinitions>
 
@@ -49,29 +49,29 @@
                                Height="125" 
                                HorizontalAlignment="Center"
                                Margin="0,25,0,50">
-                        <Image Source="/Logo1.png" Height="125"/>
-                        <!--<TextBlock Text="AVILESA"
-                                   Foreground="#FFDCDFF3"
-                                   FontSize="20"
-                                   FontFamily="Consolas"
-                                   FontWeight="SemiBold"
-                                   VerticalAlignment="Center"
-                                   Margin="5,0,0,0">                            
-                        </TextBlock>-->
+                        <Image Source="/Logo1.png" Height="150"/>
                     </StackPanel>
                     
+                    <!--Botones-->
                     <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center">
-                        <Button Content="Página 1" Command="{Binding NavigateToLineasCommand}" />
-                        <Button Content="Página 2" Command="{Binding NavigateToItinerarioCommand}" />
+                        <RadioButton Content="INICIO" Style="{StaticResource menuBtn}" Tag="#FFFFFF"
+                                     Command="{Binding NavigateToInicioCommand}" />
+                        <RadioButton Content="LINEAS" Style="{StaticResource menuBtn}" Tag="#FFFFFF" 
+                                     Command="{Binding NavigateToLineasCommand}" />
+                        <RadioButton Content="ITINERARIOS" Style="{StaticResource menuBtn}" Tag="#FFFFFF"
+                                     Command="{Binding NavigateToItinerarioCommand}" />
+                        <RadioButton Content="ABOUT" Style="{StaticResource menuBtn}" Tag="#FFFFFF"
+                                     Command="{Binding NavigateToAboutCommand}" />
+                        <RadioButton x:Name="BtnSalir" Style="{StaticResource menuBtn}" Tag="#FFFFFF" 
+                                     Content="SALIR" Click="BtnSalir_Click"/>
                     </StackPanel>
                 </StackPanel>
-
-                
             </Border>
 
             <!--Main-->
             <Border CornerRadius="0,8,8,0"
-            Grid.Column="1">
+                Grid.Column="1">
+                
                 <Border.Background>
                     <LinearGradientBrush StartPoint="1,0" EndPoint="0,0">
                         <GradientStop Color="#2a475e" Offset="0"/>
@@ -79,9 +79,28 @@
                         <GradientStop Color="#c7d5e0" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
-            </Border>
 
-            <Frame Grid.Column="1" Name="MainFrame"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                   
+                    </Grid.RowDefinitions>
+                    <StackPanel x:Name="BarraControl"
+                                Grid.Row="0"
+                                Orientation="Horizontal"
+                                FlowDirection="RightToLeft"
+                                Background="Transparent"
+                                Margin="0,0,5,0"
+                                MouseLeftButtonDown="BarraControl_MouseLeftButtonDown">                         
+                    </StackPanel>
+
+                    <Frame Grid.Column="1" Grid.Row="2" Name="MainFrame"/>
+
+                </Grid>
+            </Border>
+            
         </Grid>
     </Border>   
   

@@ -2,12 +2,15 @@
 using Project._04_LineasAutobuses.Model;
 using Project._04_LineasAutobuses.Utils;
 using Project._04_LineasAutobuses.ViewModel;
+using Project._04_LineasAutobuses.Views;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -24,6 +27,7 @@ namespace Project._04_LineasAutobuses
         {
             InitializeComponent();
             InitializeMainWindow();
+            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
         }
 
         private void InitializeMainWindow()
@@ -34,7 +38,7 @@ namespace Project._04_LineasAutobuses
                 DataContext = new MainWindowViewModel();
 
                 // Navegar a la página predeterminada
-                MainFrame.Navigate(new LineasView());
+                MainFrame.Navigate(new InicioView());
             }
             catch (Exception ex)
             {
@@ -44,5 +48,19 @@ namespace Project._04_LineasAutobuses
                 Close(); // Cerrar la ventana en caso de error grave
             }
         }
+
+        private void BtnSalir_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void BarraControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            WindowInteropHelper helper = new WindowInteropHelper(this);
+            SendMessage(helper.Handle, 161, 2, 8);          
+        }
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
     }
 }

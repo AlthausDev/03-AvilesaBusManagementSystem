@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:Project._04_LineasAutobuses"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary Source="/Resources/Styles/ButtonStyles.xaml"/>
     </Application.Resources>
 </Application>
