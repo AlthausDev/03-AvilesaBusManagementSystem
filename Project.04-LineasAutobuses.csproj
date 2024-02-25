@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\ItinerariosView.xaml.cs">
+    <Compile Update="Views\ItinerarioView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\LineasView.xaml.cs">

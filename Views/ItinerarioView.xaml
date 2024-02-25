@@ -1,0 +1,38 @@
+﻿<Page x:Class="Project._04_LineasAutobuses.Features.Itinerario.ItinerarioView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Project._04_LineasAutobuses.Features.Itinerario"
+      xmlns:viewmodel="clr-namespace:Project._04_LineasAutobuses.ViewModel" 
+      d:DataContext="{d:DesignInstance Type=viewmodel:ItinerarioViewModel}"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ItinerarioView">
+ 
+
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="420.04"/>
+        </Grid.RowDefinitions>
+
+        <!-- Botones para operaciones -->
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="5">
+            <Button Content="Agregar" Command="{Binding AgregarItinerarioCommand}"/>
+            <Button Content="Modificar" Command="{Binding ModificarItinerarioCommand}"/>
+            <Button Content="Eliminar" Command="{Binding EliminarItinerarioCommand}"/>
+            <Button Content="Consultar" Command="{Binding ConsultarItinerariosCommand}"/>
+        </StackPanel>
+
+        <!-- DataGrid para mostrar los itinerarios -->
+        <DataGrid ItemsSource="{Binding Itinerarios}" AutoGenerateColumns="False" Width="Auto" Height="Auto" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="Auto" />
+                <DataGridTextColumn Header="Municipios" Binding="{Binding Municipios}" Width="Auto" />
+                <DataGridTextColumn Header="Intervalo Desde Salida" Binding="{Binding IntervaloDesdeSalida}" Width="Auto" />
+                
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

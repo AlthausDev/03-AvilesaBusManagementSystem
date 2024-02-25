@@ -18,9 +18,9 @@ namespace Project._04_LineasAutobuses.Features.Itinerario
     /// <summary>
     /// Lógica de interacción para ItinerariosView.xaml
     /// </summary>
-    public partial class ItinerariosView : Page
+    public partial class ItinerarioView : Page
     {
-        public ItinerariosView()
+        public ItinerarioView()
         {
             InitializeComponent();
         }

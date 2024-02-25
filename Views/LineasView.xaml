@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Project._04_LineasAutobuses.Model" 
+      xmlns:local="clr-namespace:Project._04_LineasAutobuses.Features.Linea"
       xmlns:viewmodel="clr-namespace:Project._04_LineasAutobuses.ViewModel" 
       d:DataContext="{d:DesignInstance Type=viewmodel:LineaViewModel}"
       mc:Ignorable="d" 
@@ -11,48 +11,30 @@
       Title="LineasView">
 
     <Grid>
-        <!--<Page.DataContext>
-            <local:LineasViewModel/>
-        </Page.DataContext>-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <Page.Resources>
-            <!-- Estilo para las celdas del DataGrid -->
-            <Style TargetType="DataGridCell">
-                <Setter Property="Padding" Value="5"/>
-                <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="BorderBrush" Value="LightGray"/>
-                <Setter Property="Foreground" Value="Black"/>
-            </Style>
+        <!-- Botones para operaciones -->
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="5">
+            <Button Content="Agregar" Command="{Binding AgregarLineaCommand}"/>
+            <Button Content="Modificar" Command="{Binding ModificarLineaCommand}"/>
+            <Button Content="Eliminar" Command="{Binding EliminarLineaCommand}"/>
+            <Button Content="Consultar" Command="{Binding ConsultarLineasCommand}"/>
+        </StackPanel>
 
-            <!-- Estilo para los encabezados del DataGrid -->
-            <Style TargetType="DataGridColumnHeader">
-                <Setter Property="Background" Value="LightGray"/>
-                <Setter Property="Foreground" Value="Black"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            </Style>
-
-            <!-- Estilo para las filas del DataGrid -->
-            <Style TargetType="DataGridRow">
-                <Setter Property="Background" Value="White"/>
-                <Setter Property="Foreground" Value="Black"/>
-                <Setter Property="FontWeight" Value="Normal"/>
-                <Setter Property="FontSize" Value="12"/>
-            </Style>
-        </Page.Resources>
-
-        <Grid>
-            <DataGrid ItemsSource="{Binding Lineas}" AutoGenerateColumns="False" Width="Auto" Height="Auto">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Numero de Linea" Binding="{Binding NumeroLinea}" Width="Auto" />
-                    <DataGridTextColumn Header="Origen" Binding="{Binding Origen}" Width="Auto" />
-                    <DataGridTextColumn Header="Destino" Binding="{Binding Destino}" Width="Auto" />
-                    <DataGridTextColumn Header="Hora de Salida" Binding="{Binding HoraSalida}" Width="Auto" />
-                    <DataGridTextColumn Header="Hora de Llegada" Binding="{Binding HoraLlegada}" Width="Auto" />
-                    <DataGridTextColumn Header="IntervaloSalida" Binding="{Binding IntervaloSalida}" Width="Auto" />
-                    <DataGridTextColumn Header="Itinerario" Binding="{Binding Itinerario}" Width="Auto" />
-                </DataGrid.Columns>
-            </DataGrid>
-        </Grid>
+        <!-- DataGrid para mostrar las líneas -->
+        <DataGrid ItemsSource="{Binding Lineas}" AutoGenerateColumns="False" Width="Auto" Height="Auto" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Numero de Linea" Binding="{Binding NumeroLinea}" Width="Auto" />
+                <DataGridTextColumn Header="Origen" Binding="{Binding Origen}" Width="Auto" />
+                <DataGridTextColumn Header="Destino" Binding="{Binding Destino}" Width="Auto" />
+                <DataGridTextColumn Header="Hora de Salida" Binding="{Binding HoraSalida, StringFormat=HH:mm}" Width="Auto" />
+                <DataGridTextColumn Header="Hora de Llegada" Binding="{Binding HoraLlegada, StringFormat=HH:mm}" Width="Auto" />
+                <DataGridTextColumn Header="IntervaloSalida" Binding="{Binding IntervaloSalida}" Width="Auto" />
+                <DataGridTextColumn Header="Itinerario" Binding="{Binding Itinerario}" Width="Auto" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>
