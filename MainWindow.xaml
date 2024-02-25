@@ -5,21 +5,84 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project._04_LineasAutobuses"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <!-- Columna izquierda (autoajustable) -->
-            <ColumnDefinition Width="*"/>
-            <!-- Columna derecha (se expande) -->
-        </Grid.ColumnDefinitions>
-        
-        <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center">
-            <Button Content="Página 1" Command="{Binding NavigateToLineasCommand}" />
-            <Button Content="Página 2" Command="{Binding NavigateToItinerarioCommand}" />
-        </StackPanel>
-        
-        <Frame Grid.Column="1" Name="MainFrame"/>
-    </Grid>
+        Title="MainWindow" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True">
+
+    <!--<Window.DataContext>
+        <viewModel:MainWindowViewModel/>
+    </Window.DataContext>-->
+
+    <Border CornerRadius="10"
+            BorderThickness="2"
+            Opacity="0.95">
+
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FF5656E8" Offset="0"/>
+                <GradientStop Color="BlueViolet" Offset="0.5"/>
+                <GradientStop Color="#FF6126E8" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>  
+                <ColumnDefinition Width="*"/>    
+            </Grid.ColumnDefinitions>
+
+            <!--Navigation-->
+            <Border CornerRadius="8,0,0,8"
+                    Grid.Column="0">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                        <GradientStop Color="#FF6586AF" Offset="0"/>
+                        <GradientStop Color="#FF6995B9" Offset="0.5"/>
+                        <GradientStop Color="#c7d5e0" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <StackPanel>
+                    <StackPanel Grid.Column="0" Orientation="Horizontal"
+                               Height="125" 
+                               HorizontalAlignment="Center"
+                               Margin="0,25,0,50">
+                        <Image Source="/Logo1.png" Height="125"/>
+                        <!--<TextBlock Text="AVILESA"
+                                   Foreground="#FFDCDFF3"
+                                   FontSize="20"
+                                   FontFamily="Consolas"
+                                   FontWeight="SemiBold"
+                                   VerticalAlignment="Center"
+                                   Margin="5,0,0,0">                            
+                        </TextBlock>-->
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center">
+                        <Button Content="Página 1" Command="{Binding NavigateToLineasCommand}" />
+                        <Button Content="Página 2" Command="{Binding NavigateToItinerarioCommand}" />
+                    </StackPanel>
+                </StackPanel>
+
+                
+            </Border>
+
+            <!--Main-->
+            <Border CornerRadius="0,8,8,0"
+            Grid.Column="1">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="1,0" EndPoint="0,0">
+                        <GradientStop Color="#2a475e" Offset="0"/>
+                        <GradientStop Color="#66c0f4" Offset="0.5"/>
+                        <GradientStop Color="#c7d5e0" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+            <Frame Grid.Column="1" Name="MainFrame"/>
+        </Grid>
+    </Border>   
+  
 </Window>

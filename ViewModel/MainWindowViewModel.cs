@@ -38,7 +38,7 @@ namespace Project._04_LineasAutobuses.ViewModel
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null)
             {
-                mainWindow.MainFrame.Navigate(new ItinerariosView());
+                mainWindow.MainFrame.Navigate(new ItinerarioView());
             }
         }
     }
