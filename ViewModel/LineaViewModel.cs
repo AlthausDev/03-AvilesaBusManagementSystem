@@ -5,6 +5,9 @@ using Project._04_LineasAutobuses.Model;
 using Project._04_LineasAutobuses.Utils;
 using System;
 using Project._04_LineasAutobuses.Commands;
+using Project._04_LineasAutobuses.Views;
+using Project._04_LineasAutobuses.Views.Forms;
+using System.Windows;
 
 namespace Project._04_LineasAutobuses.ViewModel
 {
@@ -31,8 +34,7 @@ namespace Project._04_LineasAutobuses.ViewModel
                 OnPropertyChanged(nameof(LineaSeleccionada));
             }
         }
-
-        public ICommand AgregarLineaCommand { get; }
+                
         public ICommand ModificarLineaCommand { get; }
         public ICommand EliminarLineaCommand { get; }
         public ICommand ConsultarLineasCommand { get; }
@@ -42,8 +44,7 @@ namespace Project._04_LineasAutobuses.ViewModel
         public LineaViewModel()
         {
             Lineas = LoadLineas();
-
-            AgregarLineaCommand = new RelayCommand(AgregarLinea);
+          
             ModificarLineaCommand = new RelayCommand(ModificarLinea, CanModifyLinea);
             EliminarLineaCommand = new RelayCommand(EliminarLinea, CanDeleteLinea);
             ConsultarLineasCommand = new RelayCommand(ConsultarLineas);
@@ -54,12 +55,7 @@ namespace Project._04_LineasAutobuses.ViewModel
             var lineasCsv = new CsvDataService<Linea>("lineas.csv");
             return lineasCsv.ReadFromCsv();
         }
-
-        private void AgregarLinea()
-        {
-            Lineas.Add(new Linea());
-        }
-
+  
         private void ModificarLinea()
         {
             // Pendiente

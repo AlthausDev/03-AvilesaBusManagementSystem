@@ -2,6 +2,7 @@
 using Project._04_LineasAutobuses.Features.Itinerario;
 using Project._04_LineasAutobuses.Features.Linea;
 using Project._04_LineasAutobuses.Views;
+using Project._04_LineasAutobuses.Views.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,7 @@ namespace Project._04_LineasAutobuses.ViewModel
         public ICommand NavigateToItinerarioCommand { get; }
         public ICommand NavigateToInicioCommand { get; }
         public ICommand NavigateToAboutCommand { get; }
+        public ICommand NavigateToNewLineFormCommand { get; }
 
         public MainWindowViewModel()
         {
@@ -27,6 +29,7 @@ namespace Project._04_LineasAutobuses.ViewModel
             NavigateToLineasCommand = new RelayCommand(NavigateToLineas);
             NavigateToItinerarioCommand = new RelayCommand(NavigateToItinerario);
             NavigateToAboutCommand = new RelayCommand(NavigateToAbout);
+            NavigateToNewLineFormCommand = new RelayCommand(NavigateToNewLineForm);
         }
 
         private void NavigateToLineas()
@@ -67,6 +70,13 @@ namespace Project._04_LineasAutobuses.ViewModel
             }
         }
 
-
+        private void NavigateToNewLineForm()
+        {
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.MainFrame.Navigate(new NewLineForm());
+            }
+        }
     }
 }

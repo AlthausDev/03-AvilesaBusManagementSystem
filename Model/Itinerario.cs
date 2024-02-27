@@ -6,16 +6,16 @@ namespace Project._04_LineasAutobuses.Model
 {
     public class Itinerario : IEditableObject, INotifyPropertyChanged
     {
-        private int _id;
-        public int Id
+        private int _numeroLinea;
+        public int NumeroLinea
         {
-            get { return _id; }
+            get { return _numeroLinea; }
             set
             {
-                if (_id != value)
+                if (_numeroLinea != value)
                 {
-                    _id = value;
-                    OnPropertyChanged(nameof(Id));
+                    _numeroLinea = value;
+                    OnPropertyChanged(nameof(NumeroLinea));
                 }
             }
         }
@@ -54,7 +54,7 @@ namespace Project._04_LineasAutobuses.Model
 
         public Itinerario(int id, Dictionary<int, string> municipios, TimeSpan intervaloDesdeSalida)
         {
-            Id = id;
+            NumeroLinea = id;
             Municipios = municipios;
             IntervaloDesdeSalida = intervaloDesdeSalida;
         }
