@@ -8,7 +8,7 @@ using Project._04_LineasAutobuses.Utils;
 
 namespace Project._04_LineasAutobuses.ViewModel.Forms
 {
-    public class NewLineViewModel : INotifyPropertyChanged
+    public class NewLineViewModel : MainWindowViewModel
     {
         private string _numeroLinea;
         public string NumeroLinea
@@ -74,7 +74,7 @@ namespace Project._04_LineasAutobuses.ViewModel.Forms
         public NewLineViewModel()
         {
             GuardarLineaCommand = new RelayCommand(GuardarLinea);
-            
+            CancelarCommand = new RelayCommand(Cancelar);
         }
 
         private void GuardarLinea()
@@ -91,7 +91,7 @@ namespace Project._04_LineasAutobuses.ViewModel.Forms
                     Itinerario = new Itinerario()
                 };
 
-                var csvDataService = new CsvDataService<Linea>("lineas.csv");
+                var csvDataService = new CsvDataService<Linea>("Lineas.csv");
                 var lineas = csvDataService.ReadFromCsv();
                 lineas.Add(nuevaLinea);
                 csvDataService.WriteToCsv(lineas);
@@ -104,8 +104,10 @@ namespace Project._04_LineasAutobuses.ViewModel.Forms
         }
         private void Cancelar()
         {
-            var mainWindow = App.Current.MainWindow as MainWindow;
-            mainWindow.MainFrame.Navigate(new LineasView());
+            if (NavigateToLineasCommand != null && NavigateToLineasCommand.CanExecute(null))
+            {
+                NavigateToLineasCommand.Execute(null);
+            }
         }
 
 

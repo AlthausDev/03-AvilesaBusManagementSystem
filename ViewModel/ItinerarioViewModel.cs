@@ -1,64 +1,159 @@
 ﻿using Project._04_LineasAutobuses.Commands;
 using Project._04_LineasAutobuses.Model;
 using Project._04_LineasAutobuses.Utils;
+using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Linq;
 using System.Windows.Input;
 
 namespace Project._04_LineasAutobuses.ViewModel
 {
-    public class ItinerarioViewModel
+    public class ItinerarioViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<Itinerario> Itinerarios { get; set; }
+        private ObservableCollection<Itinerario> _itinerarios;
+        public ObservableCollection<Itinerario> Itinerarios
+        {
+            get { return _itinerarios; }
+            set
+            {
+                _itinerarios = value;
+                OnPropertyChanged(nameof(Itinerarios));
+            }
+        }
 
-        public ICommand AgregarItinerarioCommand { get; set; }
-        public ICommand ModificarItinerarioCommand { get; set; }
-        public ICommand EliminarItinerarioCommand { get; set; }
-        public ICommand ConsultarItinerariosCommand { get; set; }
+        private ObservableCollection<Parada> _paradas;
+        public ObservableCollection<Parada> Paradas
+        {
+            get { return _paradas; }
+            set
+            {
+                _paradas = value;
+                OnPropertyChanged(nameof(Paradas));
+            }
+        }
 
+        public ICommand ConsultarParadasCommand { get; set; }
+
+        private long? _numeroLineaSeleccionada;
+
+        public long? NumeroLineaSeleccionada
+        {
+            get { return _numeroLineaSeleccionada; }
+            set
+            {
+                _numeroLineaSeleccionada = value;
+                OnPropertyChanged(nameof(NumeroLineaSeleccionada));
+                CargarParadas();
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public ItinerarioViewModel()
-        {          
-            Itinerarios = new ObservableCollection<Itinerario>();      
-            LoadItinerarios();
+        {
+            Paradas = LoadParadas();
 
-            AgregarItinerarioCommand = new RelayCommand(AgregarItinerario);
-            ModificarItinerarioCommand = new RelayCommand(ModificarItinerario);
-            EliminarItinerarioCommand = new RelayCommand(EliminarItinerario);
-            ConsultarItinerariosCommand = new RelayCommand(ConsultarItinerarios);
+            //AgregarItinerarioCommand = new RelayCommand(AgregarItinerario);
+            //ModificarItinerarioCommand = new RelayCommand(ModificarItinerario);
+            //EliminarItinerarioCommand = new RelayCommand(EliminarItinerario);
+            //ConsultarItinerariosCommand = new RelayCommand(ConsultarItinerarios);
+
+        }
+
+        private ObservableCollection<Parada> LoadParadas()
+        {
+            try
+            {
+                var paradasCsv = new CsvDataService<Parada>("Paradas.csv");
+                return new ObservableCollection<Parada>(paradasCsv.ReadFromCsv());
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error al cargar las paradas: {ex.Message}");
+                return new ObservableCollection<Parada>();
+            }
         }
 
 
-        private void LoadItinerarios()
+        private ObservableCollection<Itinerario> LoadItinerarios()
         {
-            // Crear una instancia del servicio CSV para los itinerarios
-            var itinerariosCsv = new CsvDataService<Itinerario>("itinerarios.csv");
-
-            // Leer itinerarios desde el archivo CSV y agregarlos a la colección
-            var itinerarios = itinerariosCsv.ReadFromCsv();
-            foreach (var itinerario in itinerarios)
+            try
             {
-                Itinerarios.Add(itinerario);
+                var paradasCsv = new CsvDataService<Parada>("Paradas.csv");
+                var paradas = paradasCsv.ReadFromCsv();
+                var paradasPorLinea = paradas.GroupBy(p => p.NumeroLinea);
+
+                var itinerarios = new List<Itinerario>();
+                foreach (var grupoParadas in paradasPorLinea)
+                {
+                    var numeroLinea = grupoParadas.Key;
+                    var paradasDeLinea = grupoParadas.ToList();
+                    var intervaloDesdeSalida = paradasDeLinea.First().HoraLlegada.TimeOfDay;
+
+                    var itinerario = new Itinerario
+                    {
+                        NumeroLinea = numeroLinea,
+                        Paradas = paradasDeLinea,
+                        IntervaloDesdeSalida = intervaloDesdeSalida
+                    };
+
+                    itinerarios.Add(itinerario);
+                }
+
+                return new ObservableCollection<Itinerario>(itinerarios);
             }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error al cargar los itinerarios: {ex.Message}");
+                return new ObservableCollection<Itinerario>();
+            }
+        }
+
+
+        private void CargarParadas()
+        {
+            try
+            {
+                var paradasCsv = new CsvDataService<Parada>("Paradas.csv");
+                var todasLasParadas = paradasCsv.ReadFromCsv();
+
+                Paradas = NumeroLineaSeleccionada.HasValue ?
+                    new ObservableCollection<Parada>(todasLasParadas.Where(p => p.NumeroLinea == NumeroLineaSeleccionada.Value)) :
+                    todasLasParadas;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error al cargar las paradas: {ex.Message}");
+                Paradas = new ObservableCollection<Parada>();
+            }
+        }
+
+        private void ConsultarParadas()
+        {
+            CargarParadas();
         }
 
         private void AgregarItinerario()
         {
-            // Pendiente
+            // Implementar lógica para agregar un itinerario
         }
 
         private void ModificarItinerario()
         {
-            // Pendiente
+            // Implementar lógica para modificar un itinerario
         }
 
         private void EliminarItinerario()
         {
-            // Pendiente
+            // Implementar lógica para eliminar un itinerario
         }
 
-            private void ConsultarItinerarios()
+        protected virtual void OnPropertyChanged(string propertyName)
         {
-            // Pendiente
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-    }
+    }   
+
 }

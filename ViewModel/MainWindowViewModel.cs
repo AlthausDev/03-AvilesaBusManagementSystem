@@ -1,82 +1,52 @@
 ﻿using Project._04_LineasAutobuses.Commands;
 using Project._04_LineasAutobuses.Features.Itinerario;
 using Project._04_LineasAutobuses.Features.Linea;
+using Project._04_LineasAutobuses.ViewModel.Forms;
 using Project._04_LineasAutobuses.Views;
 using Project._04_LineasAutobuses.Views.Forms;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Project._04_LineasAutobuses.ViewModel
 {
-    internal class MainWindowViewModel : INotifyPropertyChanged
+    public class MainWindowViewModel : INotifyPropertyChanged
     {
+        private readonly LineaViewModel _lineaViewModel = new LineaViewModel();
+        private readonly ItinerarioViewModel _itinerarioViewModel = new ItinerarioViewModel();
+
         public event PropertyChangedEventHandler? PropertyChanged;
-        public ICommand NavigateToLineasCommand { get; }
-        public ICommand NavigateToItinerarioCommand { get; }
-        public ICommand NavigateToInicioCommand { get; }
-        public ICommand NavigateToAboutCommand { get; }
-        public ICommand NavigateToNewLineFormCommand { get; }
 
-        public MainWindowViewModel()
-        {
-            NavigateToInicioCommand = new RelayCommand(NavigateToInicio);
-            NavigateToLineasCommand = new RelayCommand(NavigateToLineas);
-            NavigateToItinerarioCommand = new RelayCommand(NavigateToItinerario);
-            NavigateToAboutCommand = new RelayCommand(NavigateToAbout);
-            NavigateToNewLineFormCommand = new RelayCommand(NavigateToNewLineForm);
-        }
 
-        private void NavigateToLineas()
+
+        public ICommand NavigateToLineasCommand =>
+            new RelayCommand(() => NavigateTo(new LineasView(_lineaViewModel)));
+
+        public ICommand NavigateToItinerarioCommand =>
+            new RelayCommand(() => NavigateTo(new ItinerarioView(_itinerarioViewModel)));
+
+        public ICommand NavigateToInicioCommand =>
+            new RelayCommand(() => NavigateTo(new InicioView()));
+
+        public ICommand NavigateToAboutCommand =>
+            new RelayCommand(() => NavigateTo(new AboutView()));
+
+        public ICommand NavigateToNewLineFormCommand =>
+            new RelayCommand(() => NavigateTo(new NewLineForm()));
+
+
+
+        private void NavigateTo(Page page)
         {
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            if (mainWindow != null)
-            {
-                mainWindow.MainFrame.Navigate(new LineasView());
+            if (Application.Current.MainWindow is MainWindow mainWindow)
+            {            
+                mainWindow.MainFrame.Navigate(page);
+
             }
         }
 
-        private void NavigateToItinerario()
-        {
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            if (mainWindow != null)
-            {
-                mainWindow.MainFrame.Navigate(new ItinerarioView());
-            }
-        }
-
-
-        private void NavigateToInicio()
-        {
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            if (mainWindow != null)
-            {
-                mainWindow.MainFrame.Navigate(new InicioView());
-            }
-        }
-
-
-        private void NavigateToAbout()
-        {
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            if (mainWindow != null)
-            {
-                mainWindow.MainFrame.Navigate(new AboutView());
-            }
-        }
-
-        private void NavigateToNewLineForm()
-        {
-            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-            if (mainWindow != null)
-            {
-                mainWindow.MainFrame.Navigate(new NewLineForm());
-            }
-        }
     }
 }

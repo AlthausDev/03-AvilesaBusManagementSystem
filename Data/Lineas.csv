@@ -1,1 +1,11 @@
-NumeroLinea,Origen,Destino,HoraSalida,HoraLlegada,IntervaloSalida,Itinerario
+NumeroLinea;Origen;Destino;HoraSalida;HoraLlegada;IntervaloSalida
+1;Madrid;Barcelona;08:00;09:30;01:30
+2;Barcelona;Valencia;09:30;11:30;02:00
+3;Valencia;Sevilla;07:45;09:30;01:45
+4;Sevilla;Bilbao;10:00;12:15;02:15
+5;Bilbao;Málaga;07:00;08:45;01:45
+6;Málaga;Murcia;09:15;10:45;01:30
+7;Murcia;Zaragoza;06:30;08:30;02:00
+8;Zaragoza;Alicante;08:45;10:30;01:45
+9;Alicante;Córdoba;10:30;12:45;02:15
+10;Córdoba;Valladolid;08:15;10:00;01:45

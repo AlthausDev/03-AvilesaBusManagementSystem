@@ -96,7 +96,7 @@
                                 MouseLeftButtonDown="BarraControl_MouseLeftButtonDown">                         
                     </StackPanel>
 
-                    <Frame Grid.Column="1" Grid.Row="2" Name="MainFrame"/>
+                    <Frame Grid.Column="1" Grid.Row="2" Name="MainFrame" NavigationUIVisibility="Hidden"/>
 
                 </Grid>
             </Border>

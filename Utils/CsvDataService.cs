@@ -3,6 +3,7 @@ using CsvHelper.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -36,11 +37,16 @@ namespace Project._04_LineasAutobuses.Utils
             FileName = fileName;
             FilePath = System.IO.Path.Combine(Path, DataFolder, FileName);
 
+            Debug.WriteLine($"Ruta del archivo CSV: {FilePath}");
+
+
             Configuration = new CsvConfiguration(CultureInfo.CurrentCulture)
             {
-                Delimiter = ",",
-                Encoding = Encoding.UTF8,
-                HasHeaderRecord = true // Indica si el archivo CSV tiene un encabezado
+                Delimiter = ";",
+                Encoding = Encoding.Latin1,
+                HasHeaderRecord = true,
+                HeaderValidated = null, 
+                MissingFieldFound = null
             };
         }
 
@@ -52,7 +58,7 @@ namespace Project._04_LineasAutobuses.Utils
         {
             try
             {
-                using (var reader = new StreamReader(FilePath, Encoding.UTF8))
+                using (var reader = new StreamReader(FilePath, Encoding.Latin1))
                 using (var csv = new CsvReader(reader, Configuration))
                 {
                     return new ObservableCollection<T>(csv.GetRecords<T>());
@@ -60,7 +66,7 @@ namespace Project._04_LineasAutobuses.Utils
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al leer desde el archivo CSV {FilePath}: {ex.Message}");
+                Debug.WriteLine($"Error al leer desde el archivo CSV {FilePath}: {ex.Message}");
                 return new ObservableCollection<T>();
             }
         }
@@ -73,7 +79,7 @@ namespace Project._04_LineasAutobuses.Utils
         {
             try
             {
-                using (var writer = new StreamWriter(FilePath, false, Encoding.UTF8))
+                using (var writer = new StreamWriter(FilePath, false, Encoding.Latin1))
                 using (var csv = new CsvWriter(writer, Configuration))
                 {
                     csv.WriteRecords(records);
@@ -81,7 +87,7 @@ namespace Project._04_LineasAutobuses.Utils
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al escribir en el archivo CSV {FilePath}: {ex.Message}");
+                Debug.WriteLine($"Error al escribir en el archivo CSV {FilePath}: {ex.Message}");
             }
         }
     }

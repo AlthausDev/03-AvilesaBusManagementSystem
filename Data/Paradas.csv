@@ -1,4 +1,4 @@
-NumeroLinea,Municipios,IntervaloDesdeSalida
+NumeroLinea;Municipio;HoraLlegada
 1;Zaragoza;00:30
 1;Tarragona;01:15
 1;Castellón;02:00

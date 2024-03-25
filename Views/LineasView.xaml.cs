@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project._04_LineasAutobuses.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,10 @@ namespace Project._04_LineasAutobuses.Features.Linea
     /// </summary>
     public partial class LineasView : Page
     {
-        public LineasView()
+        public LineasView(LineaViewModel viewModel)
         {
             InitializeComponent();
+            DataContext = viewModel;
         }
     }
 }

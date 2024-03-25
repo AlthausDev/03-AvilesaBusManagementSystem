@@ -14,7 +14,7 @@
         <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="420.04"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!-- Botones para operaciones -->
@@ -26,12 +26,11 @@
         </StackPanel>
 
         <!-- DataGrid para mostrar los itinerarios -->
-        <DataGrid ItemsSource="{Binding Itinerarios}" AutoGenerateColumns="False" Width="Auto" Height="Auto" Grid.Row="1">
+        <DataGrid ItemsSource="{Binding Paradas}" AutoGenerateColumns="False" Width="Auto" Height="Auto" Grid.Row="1">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="Auto" />
-                <DataGridTextColumn Header="Municipios" Binding="{Binding Municipios}" Width="Auto" />
-                <DataGridTextColumn Header="Intervalo Desde Salida" Binding="{Binding IntervaloDesdeSalida}" Width="Auto" />
-                
+                <DataGridTextColumn Header="Número de Línea" Binding="{Binding NumeroLinea}" Width="Auto" />
+                <DataGridTextColumn Header="Municipio" Binding="{Binding Municipio}" Width="Auto" />
+                <DataGridTextColumn Header="Hora de Llegada" Binding="{Binding HoraLlegada}" Width="Auto" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

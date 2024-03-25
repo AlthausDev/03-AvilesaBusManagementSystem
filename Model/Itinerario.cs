@@ -1,13 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Project._04_LineasAutobuses.Model
 {
-    public class Itinerario : IEditableObject, INotifyPropertyChanged
+    public class Parada
     {
-        private int _numeroLinea;
-        public int NumeroLinea
+        public long NumeroLinea { get; set; }
+        public string Municipio { get; set; }
+        public DateTime HoraLlegada { get; set; }
+    }
+
+    public class Itinerario : INotifyPropertyChanged
+    {
+        private long _numeroLinea;
+        public long NumeroLinea
         {
             get { return _numeroLinea; }
             set
@@ -15,21 +23,21 @@ namespace Project._04_LineasAutobuses.Model
                 if (_numeroLinea != value)
                 {
                     _numeroLinea = value;
-                    OnPropertyChanged(nameof(NumeroLinea));
+                    OnPropertyChanged();
                 }
             }
         }
 
-        private Dictionary<int, string> _municipios;
-        public Dictionary<int, string> Municipios
+        private List<Parada> _paradas;
+        public List<Parada> Paradas
         {
-            get { return _municipios; }
+            get { return _paradas; }
             set
             {
-                if (_municipios != value)
+                if (_paradas != value)
                 {
-                    _municipios = value;
-                    OnPropertyChanged(nameof(Municipios));
+                    _paradas = value;
+                    OnPropertyChanged();
                 }
             }
         }
@@ -43,51 +51,14 @@ namespace Project._04_LineasAutobuses.Model
                 if (_intervaloDesdeSalida != value)
                 {
                     _intervaloDesdeSalida = value;
-                    OnPropertyChanged(nameof(IntervaloDesdeSalida));
+                    OnPropertyChanged();
                 }
             }
         }
 
-        public Itinerario()
-        {
-        }
-
-        public Itinerario(int id, Dictionary<int, string> municipios, TimeSpan intervaloDesdeSalida)
-        {
-            NumeroLinea = id;
-            Municipios = municipios;
-            IntervaloDesdeSalida = intervaloDesdeSalida;
-        }
-
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private Itinerario _backupCopy;
-        private bool _inEdit;
-
-        public void BeginEdit()
-        {
-            if (!_inEdit)
-            {
-                _backupCopy = this.MemberwiseClone() as Itinerario;
-                _inEdit = true;
-            }
-        }
-
-        public void CancelEdit()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void EndEdit()
-        {
-            if (_inEdit)
-            {
-                _backupCopy = null;
-                _inEdit = false;
-            }
-        }
-
-        protected virtual void OnPropertyChanged(string propertyName)
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

@@ -8,6 +8,8 @@ using Project._04_LineasAutobuses.Commands;
 using Project._04_LineasAutobuses.Views;
 using Project._04_LineasAutobuses.Views.Forms;
 using System.Windows;
+using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace Project._04_LineasAutobuses.ViewModel
 {
@@ -52,8 +54,17 @@ namespace Project._04_LineasAutobuses.ViewModel
 
         private ObservableCollection<Linea> LoadLineas()
         {
-            var lineasCsv = new CsvDataService<Linea>("lineas.csv");
-            return lineasCsv.ReadFromCsv();
+            try
+            {
+                var lineasCsv = new CsvDataService<Linea>("Lineas.csv");
+                return lineasCsv.ReadFromCsv();               
+            }
+
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error al cargar las líneas: {ex.Message}");
+                return new ObservableCollection<Linea>();
+            }
         }
   
         private void ModificarLinea()

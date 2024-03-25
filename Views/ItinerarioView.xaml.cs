@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project._04_LineasAutobuses.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,10 @@ namespace Project._04_LineasAutobuses.Features.Itinerario
     /// </summary>
     public partial class ItinerarioView : Page
     {
-        public ItinerarioView()
+        public ItinerarioView(ItinerarioViewModel viewModel)
         {
             InitializeComponent();
+            DataContext = viewModel;
         }
     }
 }

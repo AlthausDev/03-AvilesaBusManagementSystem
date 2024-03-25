@@ -11,7 +11,7 @@
       Title="LineasView">
 
     <Page.DataContext>
-        <viewmodel:MainWindowViewModel/>
+        <viewmodel:LineaViewModel/>
     </Page.DataContext>
 
 
@@ -23,7 +23,7 @@
 
         <!-- Botones para operaciones -->
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="5">
-            <Button Content="Agregar" Command="{Binding NavigateToNewLineFormCommand}"/>
+            <!--<Button Content="Agregar" Command="{Binding NavigateToNewLineFormCommand}"/>-->
             <Button Content="Modificar" Command="{Binding ModificarLineaCommand}"/>
             <Button Content="Eliminar" Command="{Binding EliminarLineaCommand}"/>
             <Button Content="Consultar" Command="{Binding ConsultarLineasCommand}"/>
@@ -38,7 +38,7 @@
                 <DataGridTextColumn Header="Hora de Salida" Binding="{Binding HoraSalida, StringFormat=HH:mm}" Width="Auto" />
                 <DataGridTextColumn Header="Hora de Llegada" Binding="{Binding HoraLlegada, StringFormat=HH:mm}" Width="Auto" />
                 <DataGridTextColumn Header="IntervaloSalida" Binding="{Binding IntervaloSalida}" Width="Auto" />
-                <DataGridTextColumn Header="Itinerario" Binding="{Binding Itinerario}" Width="Auto" />
+                <!--<DataGridTextColumn Header="Itinerario" Binding="{Binding Itinerario}" Width="Auto" />-->
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -34,18 +34,14 @@ namespace Project._04_LineasAutobuses
         {
             try
             {
-                // Establecer el DataContext de la ventana
                 DataContext = new MainWindowViewModel();
-
-                // Navegar a la página predeterminada
                 MainFrame.Navigate(new InicioView());
             }
             catch (Exception ex)
             {
-                // Manejar cualquier excepción que ocurra durante la inicialización
                 MessageBox.Show($"Error al inicializar la ventana principal: {ex.Message}",
                     "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                Close(); // Cerrar la ventana en caso de error grave
+                Close(); 
             }
         }
 
