@@ -11,6 +11,12 @@
         Background="Transparent"
         AllowsTransparency="True">
 
+    <Window.Resources>
+        <Style TargetType="DataGridRowHeader">
+            <Setter Property="Visibility" Value="Collapsed"/>
+        </Style>
+    </Window.Resources>
+
     <!--<Window.DataContext>
         <viewModel:MainWindowViewModel/>
     </Window.DataContext>-->
@@ -29,8 +35,8 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>  
-                <ColumnDefinition Width="*"/>    
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <!--Navigation-->
@@ -46,12 +52,17 @@
 
                 <StackPanel>
                     <StackPanel Grid.Column="0" Orientation="Horizontal"
-                               Height="125" 
-                               HorizontalAlignment="Center"
-                               Margin="0,25,0,50">
-                        <Image Source="/Logo1.png" Height="150"/>
+            Height="175" 
+            HorizontalAlignment="Center"
+            Margin="0,25,0,50">
+                        <Image Source="/Logo1.png" Height="200">
+                            <Image.Effect>
+                                <DropShadowEffect ShadowDepth="0" Color="BlueViolet" BlurRadius="35" Opacity="0.5"/>
+                            </Image.Effect>
+                        </Image>
                     </StackPanel>
-                    
+
+
                     <!--Botones-->
                     <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center">
                         <RadioButton Content="INICIO" Style="{StaticResource menuBtn}" Tag="#FFFFFF"
@@ -71,7 +82,7 @@
             <!--Main-->
             <Border CornerRadius="0,8,8,0"
                 Grid.Column="1">
-                
+
                 <Border.Background>
                     <LinearGradientBrush StartPoint="1,0" EndPoint="0,0">
                         <GradientStop Color="#2a475e" Offset="0"/>
@@ -85,7 +96,7 @@
                         <RowDefinition Height="40"/>
                         <RowDefinition Height="40"/>
                         <RowDefinition Height="*"/>
-                   
+
                     </Grid.RowDefinitions>
                     <StackPanel x:Name="BarraControl"
                                 Grid.Row="0"
@@ -93,15 +104,15 @@
                                 FlowDirection="RightToLeft"
                                 Background="Transparent"
                                 Margin="0,0,5,0"
-                                MouseLeftButtonDown="BarraControl_MouseLeftButtonDown">                         
+                                MouseLeftButtonDown="BarraControl_MouseLeftButtonDown">
                     </StackPanel>
 
                     <Frame Grid.Column="1" Grid.Row="2" Name="MainFrame" NavigationUIVisibility="Hidden"/>
 
                 </Grid>
             </Border>
-            
+
         </Grid>
-    </Border>   
-  
+    </Border>
+
 </Window>

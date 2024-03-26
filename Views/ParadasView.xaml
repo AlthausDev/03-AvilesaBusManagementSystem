@@ -22,24 +22,25 @@
             <Separator Margin="0,0" Width="0" Height="0"/>
             <Button Content="AÑADIR" Command="{Binding AgregarParadaCommand}" 
                     Style="{StaticResource normalBtn}"/>
-            <Separator Margin="0,7,0,7"/>
+            <Separator Margin="10"/>
             <Button Content="MODIFICAR" Command="{Binding ModificarParadaCommand}" CommandParameter="{Binding LineaSeleccionada}" 
                     Style="{StaticResource normalBtn}"/>
-            <Separator Margin="0,8,0,8"/>
+            <Separator Margin="10"/>
             <Button Content="ELIMINAR" Command="{Binding EliminarParadaCommand}" CommandParameter="{Binding LineaSeleccionada}" 
                     Style="{StaticResource normalBtn}"/>
-            <Separator Margin="0,8,0,8"/>
+            <Separator Margin="10"/>
             <Button Content="ATRÁS" Command="{Binding VolverCommand}"
                     Style="{StaticResource normalBtn}"/>
         </ToolBar>
 
-        <DataGrid ItemsSource="{Binding Paradas}" AutoGenerateColumns="False" Width="Auto" Height="Auto" Grid.Row="1" FontSize="16">
+
+        <DataGrid ItemsSource="{Binding Paradas}" AutoGenerateColumns="False" Style="{StaticResource DataGridStyles}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Número de Línea" Binding="{Binding NumeroLinea}" Width="*" />
-                <DataGridTextColumn Header="Orden de Parada" Binding="{Binding OrdenParada}" Width="*" />
-                <DataGridTextColumn Header="Municipio" Binding="{Binding Municipio}" Width="*" />
-                <DataGridTextColumn Header="Hora de Llegada" Binding="{Binding HoraLlegada}" Width="*" />
-            </DataGrid.Columns>
+                <DataGridTextColumn Header="NUMERO DE LÍNEA" Binding="{Binding NumeroLinea}"/>
+                <DataGridTextColumn Header="NUMERO DE PARADA" Binding="{Binding OrdenParada}"/>
+                <DataGridTextColumn Header="MUNICIPIO" Binding="{Binding Municipio}"/>
+                <DataGridTextColumn Header="TIEMPO DESDE SALIDA" Binding="{Binding HoraLlegada}"/>
+            </DataGrid.Columns>       
         </DataGrid>
 
     </Grid>

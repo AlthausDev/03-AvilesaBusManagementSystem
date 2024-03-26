@@ -14,8 +14,9 @@
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
                     <Border Background="{TemplateBinding Background}"
-                            BorderThickness="5,0,0,0"
-                            BorderBrush="{TemplateBinding BorderBrush}">
+                        BorderThickness="1"
+                        CornerRadius="3"
+                        BorderBrush="{TemplateBinding BorderBrush}">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
@@ -25,44 +26,66 @@
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#FF5873A9"/>
-                <Setter Property="Foreground" Value="{Binding Path=Tag, 
-                                    RelativeSource={RelativeSource Self}}"/>
-                <Setter Property="BorderBrush" Value="{Binding Path=Tag, 
-                    RelativeSource={RelativeSource Self}}"/>
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect ShadowDepth="0" Color="#7AA4EA" BlurRadius="40"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Offset="0" Color="#FF5873A9"/>
+                            <GradientStop Offset="0.3" Color="#FF5873A9"/>
+                            <GradientStop Offset="0.7" Color="#885873A9"/>
+                            <GradientStop Offset="1" Color="#885873A9"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="BorderBrush" Value="{Binding Path=Tag, RelativeSource={RelativeSource Self}}"/>
             </Trigger>
 
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="#FFB2CFFF"/>
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect ShadowDepth="0" Color="#0CC9FC" BlurRadius="40"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Offset="0" Color="#FFB2CFFF"/>
+                            <GradientStop Offset="0.3" Color="#FFB2CFFF"/>
+                            <GradientStop Offset="0.7" Color="#88B2CFFF"/>
+                            <GradientStop Offset="1" Color="#88B2CFFF"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
                 <Setter Property="Foreground" Value="Black"/>
-                <Setter Property="BorderBrush" Value="{Binding Path=Tag, 
-                                    RelativeSource={RelativeSource Self}}"/>
+                <Setter Property="BorderBrush" Value="{Binding Path=Tag, RelativeSource={RelativeSource Self}}"/>
             </Trigger>
-
         </Style.Triggers>
     </Style>
 
     <Style x:Key="normalBtn" TargetType="Button">
-        <Setter Property="Height" Value="45"/>
-        <Setter Property="Width" Value="150"/>
-        <Setter Property="Padding" Value="30,40"/>
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="FontFamily" Value="Franklin Gothic"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="125"/>
         <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontSize" Value="13"/>
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}"
-                        BorderThickness="20,0,20,0"
+                        BorderThickness="1"
+                        CornerRadius="5"
                         BorderBrush="{TemplateBinding BorderBrush}">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Effect">
@@ -70,9 +93,20 @@
                         <DropShadowEffect ShadowDepth="0" Color="#0CC9FC" BlurRadius="40"/>
                     </Setter.Value>
                 </Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Offset="0" Color="#FF5873A9"/>
+                            <GradientStop Offset="0.3" Color="#FF5873A9"/>
+                            <GradientStop Offset="0.7" Color="#885873A9"/>
+                            <GradientStop Offset="1" Color="#885873A9"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" Value="White"/>
                 <Setter Property="BorderBrush" Value="{Binding Path=Tag, RelativeSource={RelativeSource Self}}"/>
             </Trigger>
         </Style.Triggers>
-
     </Style>
+
 </ResourceDictionary>

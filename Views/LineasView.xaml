@@ -21,32 +21,31 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-
-        <!-- ToolBar para los botones de operaciones -->
         <ToolBar Grid.Row="0" Margin="0" ToolBarTray.IsLocked="True">
-            <Separator Margin="5,0" Width="0" Height="0"/>
-            <Button Content="Añadir" Command="{Binding NavigateToNewLineFormCommand}" Padding="7" FontWeight="Bold"/>
+            <Separator Margin="0" Width="0" Height="0"/>
+            <Button Content="AÑADIR" Command="{Binding NavigateToNewLineFormCommand}" 
+            Style="{StaticResource normalBtn}"/>
             <Separator Margin="10"/>
-            <Button Content="Modificar" Command="{Binding ModificarLineaCommand}" CommandParameter="{Binding LineaSeleccionada}" Padding="7" FontWeight="Bold"/>
+            <Button Content="MODIFICAR" Command="{Binding ModificarLineaCommand}" CommandParameter="{Binding LineaSeleccionada}" 
+            Style="{StaticResource normalBtn}"/>
             <Separator Margin="10"/>
-            <Button Content="Eliminar" Command="{Binding EliminarLineaCommand}" CommandParameter="{Binding LineaSeleccionada}" Padding="7" FontWeight="Bold"/>
+            <Button Content="ELIMINAR" Command="{Binding EliminarLineaCommand}" CommandParameter="{Binding LineaSeleccionada}" 
+            Style="{StaticResource normalBtn}"/>
             <Separator Margin="10"/>
-            <Button Content="Consultar" Command="{Binding ConsultarLineasCommand}" CommandParameter="{Binding LineaSeleccionada}" Padding="7" FontWeight="Bold"/>
+            <Button Content="CONSULTAR" Command="{Binding ConsultarLineasCommand}" CommandParameter="{Binding LineaSeleccionada}" 
+            Style="{StaticResource normalBtn}"/>
         </ToolBar>
 
-
-
-        <!-- DataGrid para mostrar las líneas -->
-        <DataGrid ItemsSource="{Binding Lineas}" SelectedItem="{Binding LineaSeleccionada}" AutoGenerateColumns="False" Width="Auto" Height="Auto" Grid.Row="1">
+        <DataGrid ItemsSource="{Binding Lineas}" SelectedItem="{Binding LineaSeleccionada}" AutoGenerateColumns="False" Style="{StaticResource DataGridStyles}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Numero de Linea" Binding="{Binding NumeroLinea}" Width="Auto" />
-                <DataGridTextColumn Header="Origen" Binding="{Binding Origen}" Width="Auto" />
-                <DataGridTextColumn Header="Destino" Binding="{Binding Destino}" Width="Auto" />
-                <DataGridTextColumn Header="Hora de Salida" Binding="{Binding HoraSalida, StringFormat=HH:mm}" Width="Auto" />
-                <DataGridTextColumn Header="Hora de Llegada" Binding="{Binding HoraLlegada, StringFormat=HH:mm}" Width="Auto" />
-                <DataGridTextColumn Header="IntervaloSalida" Binding="{Binding IntervaloSalida}" Width="Auto" />
-                <!--<DataGridTextColumn Header="Itinerario" Binding="{Binding Itinerario}" Width="Auto" />-->
+                <DataGridTextColumn Header="NUMERO DE LÍNEA" Binding="{Binding NumeroLinea}"/>
+                <DataGridTextColumn Header="ORIGEN" Binding="{Binding Origen}"/>
+                <DataGridTextColumn Header="DESTINO" Binding="{Binding Destino}"/>
+                <DataGridTextColumn Header="SALIDA" Binding="{Binding HoraSalida, StringFormat=HH:mm}"/>
+                <DataGridTextColumn Header="LLEGADA" Binding="{Binding HoraLlegada, StringFormat=HH:mm}"/>
+                <DataGridTextColumn Header="INTERVALO" Binding="{Binding IntervaloSalida}"/>
             </DataGrid.Columns>
         </DataGrid>
+
     </Grid>
 </Page>
