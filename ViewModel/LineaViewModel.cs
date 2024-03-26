@@ -15,6 +15,20 @@ namespace Project._04_LineasAutobuses.ViewModel
 {
     public class LineaViewModel : INotifyPropertyChanged
     {
+        private static LineaViewModel _instance;
+
+        public static LineaViewModel Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new LineaViewModel();
+                }
+                return _instance;
+            }
+        }
+
         private ObservableCollection<Linea> _lineas;
         public ObservableCollection<Linea> Lineas
         {
@@ -55,7 +69,7 @@ namespace Project._04_LineasAutobuses.ViewModel
 
         }
 
-        private ObservableCollection<Linea> LoadLineas()
+        internal ObservableCollection<Linea> LoadLineas()
         {
             try
             {

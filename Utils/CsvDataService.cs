@@ -90,5 +90,20 @@ namespace Project._04_LineasAutobuses.Utils
                 Debug.WriteLine($"Error al escribir en el archivo CSV {FilePath}: {ex.Message}");
             }
         }
+
+        public long GetLastLineaNumber()
+        {
+            var lineas = ReadFromCsv().OfType<IHasNumeroLinea>();
+            if (lineas.Any())
+            {
+                return lineas.Max(l => l.NumeroLinea);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+
     }
 }

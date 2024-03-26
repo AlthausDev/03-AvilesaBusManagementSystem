@@ -34,14 +34,14 @@ namespace Project._04_LineasAutobuses
         {
             try
             {
-                DataContext = new MainWindowViewModel();
+                DataContext = MainWindowViewModel.Instance;
                 MainFrame.Navigate(new InicioView());
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al inicializar la ventana principal: {ex.Message}",
                     "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                Close(); 
+                Close();
             }
         }
 
@@ -53,7 +53,7 @@ namespace Project._04_LineasAutobuses
         private void BarraControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             WindowInteropHelper helper = new WindowInteropHelper(this);
-            SendMessage(helper.Handle, 161, 2, 8);          
+            SendMessage(helper.Handle, 161, 2, 8);
         }
 
         [DllImport("user32.dll")]

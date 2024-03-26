@@ -10,8 +10,8 @@ namespace Project._04_LineasAutobuses.ViewModel.Forms
 {
     public class NewLineViewModel : MainWindowViewModel
     {
-        private string _numeroLinea;
-        public string NumeroLinea
+        private long _numeroLinea;
+        public long NumeroLinea
         {
             get { return _numeroLinea; }
             set
@@ -20,6 +20,7 @@ namespace Project._04_LineasAutobuses.ViewModel.Forms
                 OnPropertyChanged(nameof(NumeroLinea));
             }
         }
+
 
         private string _origen;
         public string Origen
@@ -73,6 +74,9 @@ namespace Project._04_LineasAutobuses.ViewModel.Forms
 
         public NewLineViewModel()
         {
+            var csvDataService = new CsvDataService<Linea>("Lineas.csv");
+            _numeroLinea = csvDataService.GetLastLineaNumber() + 1;
+
             GuardarLineaCommand = new RelayCommand(GuardarLinea);
             CancelarCommand = new RelayCommand(Cancelar);
         }
@@ -83,6 +87,7 @@ namespace Project._04_LineasAutobuses.ViewModel.Forms
             {
                 var nuevaLinea = new Linea
                 {
+                    NumeroLinea = this.NumeroLinea,
                     Origen = this.Origen,
                     Destino = this.Destino,
                     HoraSalida = DateTime.Now,
@@ -106,6 +111,8 @@ namespace Project._04_LineasAutobuses.ViewModel.Forms
         {
             if (NavigateToLineasCommand != null && NavigateToLineasCommand.CanExecute(null))
             {
+                Origen = string.Empty;
+                Destino = string.Empty;
                 NavigateToLineasCommand.Execute(null);
             }
         }

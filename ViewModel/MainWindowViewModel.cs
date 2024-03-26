@@ -15,19 +15,15 @@ namespace Project._04_LineasAutobuses.ViewModel
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
-        private readonly LineaViewModel _lineaViewModel = new LineaViewModel();
         private readonly ItinerarioViewModel _itinerarioViewModel = new ItinerarioViewModel();
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-
         private static readonly Lazy<MainWindowViewModel> instance = new Lazy<MainWindowViewModel>(() => new MainWindowViewModel());
-
         public static MainWindowViewModel Instance => instance.Value;
 
-
         public ICommand NavigateToLineasCommand =>
-            new RelayCommand(() => NavigateTo(new LineasView(_lineaViewModel)));
+            new RelayCommand(() => NavigateToLineas());
 
         public ICommand NavigateToItinerarioCommand =>
             new RelayCommand(() => NavigateTo(new ItinerarioView(_itinerarioViewModel)));
@@ -41,16 +37,19 @@ namespace Project._04_LineasAutobuses.ViewModel
         public ICommand NavigateToNewLineFormCommand =>
             new RelayCommand(() => NavigateTo(new NewLineForm()));
 
-
+        private void NavigateToLineas()
+        {
+            var lineaViewModel = new LineaViewModel();
+            lineaViewModel.LoadLineas();
+            NavigateTo(new LineasView(lineaViewModel));
+        }
 
         private void NavigateTo(Page page)
         {
             if (Application.Current.MainWindow is MainWindow mainWindow)
-            {            
+            {
                 mainWindow.MainFrame.Navigate(page);
-
             }
         }
-
     }
 }

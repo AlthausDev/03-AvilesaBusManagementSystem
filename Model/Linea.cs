@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Project._04_LineasAutobuses.Utils;
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Project._04_LineasAutobuses.Model
 {
-    public class Linea : IEditableObject, INotifyPropertyChanged
+    public class Linea : IEditableObject, INotifyPropertyChanged, IHasNumeroLinea
     {
         private long _numeroLinea;
         public long NumeroLinea
