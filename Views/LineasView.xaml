@@ -27,11 +27,11 @@
             <Separator Margin="5,0" Width="0" Height="0"/>
             <Button Content="Añadir" Command="{Binding NavigateToNewLineFormCommand}" Padding="7" FontWeight="Bold"/>
             <Separator Margin="10"/>
-            <Button Content="Modificar" Command="{Binding ModificarLineaCommand}" Padding="7" FontWeight="Bold"/>
+            <Button Content="Modificar" Command="{Binding ModificarLineaCommand}" CommandParameter="{Binding LineaSeleccionada}" Padding="7" FontWeight="Bold"/>
             <Separator Margin="10"/>
             <Button Content="Eliminar" Command="{Binding EliminarLineaCommand}" CommandParameter="{Binding LineaSeleccionada}" Padding="7" FontWeight="Bold"/>
             <Separator Margin="10"/>
-            <Button Content="Consultar" Command="{Binding ConsultarLineasCommand}" Padding="7" FontWeight="Bold"/>
+            <Button Content="Consultar" Command="{Binding ConsultarLineasCommand}" CommandParameter="{Binding LineaSeleccionada}" Padding="7" FontWeight="Bold"/>
         </ToolBar>
 
 

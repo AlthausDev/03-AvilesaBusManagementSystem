@@ -1,11 +1,19 @@
 NumeroLinea;Origen;Destino;HoraSalida;HoraLlegada;IntervaloSalida
-1;Madrid;Barcelona;08:00;09:30;01:30
-2;Barcelona;Valencia;09:30;11:30;02:00
-3;Valencia;Sevilla;07:45;09:30;01:45
-4;Sevilla;Bilbao;10:00;12:15;02:15
-5;Bilbao;Málaga;07:00;08:45;01:45
-6;Málaga;Murcia;09:15;10:45;01:30
-7;Murcia;Zaragoza;06:30;08:30;02:00
-8;Zaragoza;Alicante;08:45;10:30;01:45
-9;Alicante;Córdoba;10:30;12:45;02:15
-10;Córdoba;Valladolid;08:15;10:00;01:45
+1;Madrid;Girona;07:00:00;00:00:00;01:30:00
+2;Figueres;Burgos;02:00:00;12:00:00;02:00:00
+3;Sevilla;Tarragona;08:00:00;02:00:00;01:45:00
+4;Barcelona;Burgos;04:00:00;14:00:00;02:00:00
+5;Valencia;Mataró;09:00:00;03:00:00;01:00:00
+6;Badalona;Granollers;05:00:00;13:00:00;01:00:00
+7;Barcelona;Reus;10:00:00;04:00:00;02:00:00
+8;Salou;Alicante;06:00:00;14:00:00;02:00:00
+9;Sevilla;Murcia;15:00:00;01:00:00;02:00:00
+10;Vigo;Valladolid;16:00:00;00:00:00;02:00:00
+11;Valladolid;La Coruña;02:00:00;00:00:00;02:00:00
+12;Vitoria;Gijón;12:00:00;20:00:00;02:00:00
+13;Gijón;San Sebastián;12:00:00;00:00:00;02:00:00
+14;Madrid;Sevilla;13:00:00;21:00:00;02:00:00
+15;Sevilla;Granada;13:00:00;21:00:00;02:00:00
+16;Burgos;Bilbao;14:00:00;22:00:00;02:00:00
+17;Bilbao;Oviedo;14:00:00;22:00:00;02:00:00
+18;Valencia;Granada;09:00:00;17:00:00;02:00:00

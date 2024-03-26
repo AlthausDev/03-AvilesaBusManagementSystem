@@ -16,17 +16,23 @@ namespace Project._04_LineasAutobuses.ViewModel
     public class MainWindowViewModel : INotifyPropertyChanged
     {
         private readonly ItinerarioViewModel _itinerarioViewModel = new ItinerarioViewModel();
+        private readonly ParadasViewModel _paradasViewModel = new ParadasViewModel();
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private static readonly Lazy<MainWindowViewModel> instance = new Lazy<MainWindowViewModel>(() => new MainWindowViewModel());
+        public static long NumeroLineaSeleccionada { get; set; }
+
         public static MainWindowViewModel Instance => instance.Value;
 
         public ICommand NavigateToLineasCommand =>
             new RelayCommand(() => NavigateToLineas());
 
         public ICommand NavigateToItinerarioCommand =>
-            new RelayCommand(() => NavigateTo(new ItinerarioView(_itinerarioViewModel)));
+            new RelayCommand(() => NavigateTo(new ItinerarioView(_itinerarioViewModel, NumeroLineaSeleccionada)));
+
+        public ICommand NavigateToParadasCommand =>
+            new RelayCommand(() => NavigateTo(new ParadasView(_paradasViewModel, NumeroLineaSeleccionada)));
 
         public ICommand NavigateToInicioCommand =>
             new RelayCommand(() => NavigateTo(new InicioView()));

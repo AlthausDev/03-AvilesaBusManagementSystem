@@ -14,17 +14,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Project._04_LineasAutobuses.Features.Itinerario
+namespace Project._04_LineasAutobuses.Views
 {
     /// <summary>
-    /// Lógica de interacción para ItinerariosView.xaml
+    /// Lógica de interacción para ParadasView.xaml
     /// </summary>
-    public partial class ItinerarioView : Page
+    public partial class ParadasView : Page
     {
-        public ItinerarioView(ItinerarioViewModel viewModel, long NumeroLinea)
+        public ParadasView(ParadasViewModel viewModel, long NumeroLinea)
         {
             InitializeComponent();
             DataContext = viewModel;
+            viewModel.NumeroLineaSeleccionada = NumeroLinea;
         }
     }
 }

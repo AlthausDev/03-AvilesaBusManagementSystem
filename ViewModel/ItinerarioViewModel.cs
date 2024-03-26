@@ -12,6 +12,10 @@ namespace Project._04_LineasAutobuses.ViewModel
 {
     public class ItinerarioViewModel : INotifyPropertyChanged
     {
+        private static readonly Lazy<ItinerarioViewModel> instance = new Lazy<ItinerarioViewModel>(() => new ItinerarioViewModel());
+        public static ItinerarioViewModel Instance => instance.Value;
+
+
         private ObservableCollection<Itinerario> _itinerarios;
         public ObservableCollection<Itinerario> Itinerarios
         {
@@ -77,39 +81,39 @@ namespace Project._04_LineasAutobuses.ViewModel
         }
 
 
-        private ObservableCollection<Itinerario> LoadItinerarios()
-        {
-            try
-            {
-                var paradasCsv = new CsvDataService<Parada>("Paradas.csv");
-                var paradas = paradasCsv.ReadFromCsv();
-                var paradasPorLinea = paradas.GroupBy(p => p.NumeroLinea);
+        //private ObservableCollection<Itinerario> LoadItinerarios()
+        //{
+        //    try
+        //    {
+        //        var paradasCsv = new CsvDataService<Parada>("Paradas.csv");
+        //        var paradas = paradasCsv.ReadFromCsv();
+        //        var paradasPorLinea = paradas.GroupBy(p => p.NumeroLinea);
 
-                var itinerarios = new List<Itinerario>();
-                foreach (var grupoParadas in paradasPorLinea)
-                {
-                    var numeroLinea = grupoParadas.Key;
-                    var paradasDeLinea = grupoParadas.ToList();
-                    var intervaloDesdeSalida = paradasDeLinea.First().HoraLlegada.TimeOfDay;
+        //        var itinerarios = new List<Itinerario>();
+        //        foreach (var grupoParadas in paradasPorLinea)
+        //        {
+        //            var numeroLinea = grupoParadas.Key;
+        //            var paradasDeLinea = grupoParadas.ToList();
+        //            var intervaloDesdeSalida = paradasDeLinea.First().HoraLlegada.TimeOfDay;
 
-                    var itinerario = new Itinerario
-                    {
-                        NumeroLinea = numeroLinea,
-                        Paradas = paradasDeLinea,
-                        IntervaloDesdeSalida = intervaloDesdeSalida
-                    };
+        //            var itinerario = new Itinerario
+        //            {
+        //                NumeroLinea = numeroLinea,
+        //                Paradas = paradasDeLinea,
+        //                IntervaloDesdeSalida = intervaloDesdeSalida
+        //            };
 
-                    itinerarios.Add(itinerario);
-                }
+        //            itinerarios.Add(itinerario);
+        //        }
 
-                return new ObservableCollection<Itinerario>(itinerarios);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error al cargar los itinerarios: {ex.Message}");
-                return new ObservableCollection<Itinerario>();
-            }
-        }
+        //        return new ObservableCollection<Itinerario>(itinerarios);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Debug.WriteLine($"Error al cargar los itinerarios: {ex.Message}");
+        //        return new ObservableCollection<Itinerario>();
+        //    }
+        //}
 
 
         private void CargarParadas()
@@ -129,6 +133,7 @@ namespace Project._04_LineasAutobuses.ViewModel
                 Paradas = new ObservableCollection<Parada>();
             }
         }
+
 
         private void ConsultarParadas()
         {

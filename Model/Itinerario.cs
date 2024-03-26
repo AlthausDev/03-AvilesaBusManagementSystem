@@ -4,13 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace Project._04_LineasAutobuses.Model
-{
-    public class Parada
-    {
-        public long NumeroLinea { get; set; }
-        public string Municipio { get; set; }
-        public DateTime HoraLlegada { get; set; }
-    }
+{  
 
     public class Itinerario : INotifyPropertyChanged
     {

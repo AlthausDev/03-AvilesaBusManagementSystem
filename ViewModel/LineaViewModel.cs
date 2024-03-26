@@ -64,8 +64,8 @@ namespace Project._04_LineasAutobuses.ViewModel
             Lineas = LoadLineas();
           
             ModificarLineaCommand = new RelayCommand(ModificarLinea, CanModifyLinea);
-            EliminarLineaCommand = new RelayCommand(EliminarLinea, CanDeleteLinea);
-            ConsultarLineasCommand = new RelayCommand(ConsultarLineas);
+            EliminarLineaCommand = new RelayCommand(EliminarLinea, IsLineSelected);
+            ConsultarLineasCommand = new RelayCommand(ConsultarLineas, IsLineSelected);
 
         }
 
@@ -97,7 +97,7 @@ namespace Project._04_LineasAutobuses.ViewModel
 
         private void EliminarLinea()
         {
-            if (LineaSeleccionada != null)
+            if (IsLineSelected())
             {
                 Lineas.Remove(LineaSeleccionada);
 
@@ -112,18 +112,23 @@ namespace Project._04_LineasAutobuses.ViewModel
                 }
             }
         }
+ 
 
+        private void ConsultarLineas()
+        {
+            if (IsLineSelected())
+            {
+                MainWindowViewModel.NumeroLineaSeleccionada = LineaSeleccionada.NumeroLinea;
+                MainWindowViewModel.Instance.NavigateToParadasCommand.Execute(null);
+            }           
+        }
 
-
-        private bool CanDeleteLinea()
+        private bool IsLineSelected()
         {
             return LineaSeleccionada != null;
         }
 
-        private void ConsultarLineas()
-        {
-            // Pendiente
-        }
+
 
         protected virtual void OnPropertyChanged(string propertyName)
         {
