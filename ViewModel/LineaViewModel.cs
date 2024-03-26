@@ -100,12 +100,23 @@ namespace Project._04_LineasAutobuses.ViewModel
             if (LineaSeleccionada != null)
             {
                 Lineas.Remove(LineaSeleccionada);
+
+                try
+                {
+                    var csvDataService = new CsvDataService<Linea>("Lineas.csv");
+                    csvDataService.WriteToCsv(Lineas);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error al escribir en el archivo CSV: {ex.Message}");
+                }
             }
         }
 
+
+
         private bool CanDeleteLinea()
         {
-            // Pendiente
             return LineaSeleccionada != null;
         }
 

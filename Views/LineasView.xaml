@@ -21,16 +21,23 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Botones para operaciones -->
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="5">
-            <Button Content="Agregar" Command="{Binding NavigateToNewLineFormCommand}"/>
-            <Button Content="Modificar" Command="{Binding ModificarLineaCommand}"/>
-            <Button Content="Eliminar" Command="{Binding EliminarLineaCommand}"/>
-            <Button Content="Consultar" Command="{Binding ConsultarLineasCommand}"/>
-        </StackPanel>
+
+        <!-- ToolBar para los botones de operaciones -->
+        <ToolBar Grid.Row="0" Margin="0" ToolBarTray.IsLocked="True">
+            <Separator Margin="5,0" Width="0" Height="0"/>
+            <Button Content="Añadir" Command="{Binding NavigateToNewLineFormCommand}" Padding="7" FontWeight="Bold"/>
+            <Separator Margin="10"/>
+            <Button Content="Modificar" Command="{Binding ModificarLineaCommand}" Padding="7" FontWeight="Bold"/>
+            <Separator Margin="10"/>
+            <Button Content="Eliminar" Command="{Binding EliminarLineaCommand}" CommandParameter="{Binding LineaSeleccionada}" Padding="7" FontWeight="Bold"/>
+            <Separator Margin="10"/>
+            <Button Content="Consultar" Command="{Binding ConsultarLineasCommand}" Padding="7" FontWeight="Bold"/>
+        </ToolBar>
+
+
 
         <!-- DataGrid para mostrar las líneas -->
-        <DataGrid ItemsSource="{Binding Lineas}" AutoGenerateColumns="False" Width="Auto" Height="Auto" Grid.Row="1">
+        <DataGrid ItemsSource="{Binding Lineas}" SelectedItem="{Binding LineaSeleccionada}" AutoGenerateColumns="False" Width="Auto" Height="Auto" Grid.Row="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Numero de Linea" Binding="{Binding NumeroLinea}" Width="Auto" />
                 <DataGridTextColumn Header="Origen" Binding="{Binding Origen}" Width="Auto" />
