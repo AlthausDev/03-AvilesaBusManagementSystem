@@ -5,14 +5,15 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Project._04_LineasAutobuses.Views.Forms"
       xmlns:viewmodel="clr-namespace:Project._04_LineasAutobuses.ViewModel.Forms" 
+      xmlns:controls="clr-namespace:Project._04_LineasAutobuses.Controls"
       d:DataContext="{d:DesignInstance Type=viewmodel:NewLineViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="NewLineForm">
 
-    <!--<Page.DataContext>
-        <viewmodel:MainWindowViewModel/>
-    </Page.DataContext>-->
+    <Page.DataContext>
+        <viewmodel:NewLineViewModel/>
+    </Page.DataContext>
 
     <Grid Margin="20">
         <Grid.RowDefinitions>
@@ -31,23 +32,23 @@
 
         <!-- Número de Línea -->
         <TextBlock Grid.Row="0" Text="Número de Línea"/>
-        <TextBox Grid.Row="1" Text="{Binding NumeroLinea, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="1" Text="{Binding NuevaLinea.NumeroLinea, UpdateSourceTrigger=PropertyChanged}"/>
 
         <!-- Origen -->
         <TextBlock Grid.Row="2" Text="Origen"/>
-        <TextBox Grid.Row="3" Text="{Binding Origen, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="3" Text="{Binding NuevaLinea.Origen, UpdateSourceTrigger=PropertyChanged}"/>
 
         <!-- Destino -->
         <TextBlock Grid.Row="4" Text="Destino"/>
-        <TextBox Grid.Row="5" Text="{Binding Destino, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="5" Text="{Binding NuevaLinea.Destino, UpdateSourceTrigger=PropertyChanged}"/>
 
         <!-- Hora de Salida -->
         <TextBlock Grid.Row="6" Text="Hora de Salida"/>
-        <TextBox Grid.Row="7" Text="{Binding HoraSalida, UpdateSourceTrigger=PropertyChanged}"/>
+        <controls:TimePickerControl Grid.Row="7" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
         <!-- Hora de Llegada -->
         <TextBlock Grid.Row="8" Text="Hora de Llegada"/>
-        <TextBox Grid.Row="9" Text="{Binding HoraLlegada, UpdateSourceTrigger=PropertyChanged}"/>
+        <controls:TimePickerControl Grid.Row="9" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
         <Grid Grid.Row="10">
             <Grid.ColumnDefinitions>

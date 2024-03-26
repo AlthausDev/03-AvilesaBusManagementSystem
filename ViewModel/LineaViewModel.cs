@@ -40,6 +40,8 @@ namespace Project._04_LineasAutobuses.ViewModel
         public ICommand ModificarLineaCommand { get; }
         public ICommand EliminarLineaCommand { get; }
         public ICommand ConsultarLineasCommand { get; }
+        public ICommand NavigateToNewLineFormCommand => MainWindowViewModel.Instance.NavigateToNewLineFormCommand;
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -50,6 +52,7 @@ namespace Project._04_LineasAutobuses.ViewModel
             ModificarLineaCommand = new RelayCommand(ModificarLinea, CanModifyLinea);
             EliminarLineaCommand = new RelayCommand(EliminarLinea, CanDeleteLinea);
             ConsultarLineasCommand = new RelayCommand(ConsultarLineas);
+
         }
 
         private ObservableCollection<Linea> LoadLineas()

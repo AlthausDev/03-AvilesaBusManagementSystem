@@ -21,6 +21,10 @@ namespace Project._04_LineasAutobuses.ViewModel
         public event PropertyChangedEventHandler? PropertyChanged;
 
 
+        private static readonly Lazy<MainWindowViewModel> instance = new Lazy<MainWindowViewModel>(() => new MainWindowViewModel());
+
+        public static MainWindowViewModel Instance => instance.Value;
+
 
         public ICommand NavigateToLineasCommand =>
             new RelayCommand(() => NavigateTo(new LineasView(_lineaViewModel)));

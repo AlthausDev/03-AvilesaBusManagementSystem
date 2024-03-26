@@ -109,15 +109,14 @@ namespace Project._04_LineasAutobuses.Model
         }
 
         public Linea(long numeroLinea, string origen, string destino,
-            DateTime horaSalida, DateTime horaLlegada, TimeSpan intervaloSalida, Itinerario itinerario)
+            DateTime horaSalida, DateTime horaLlegada, TimeSpan intervaloSalida)
         {
             NumeroLinea = numeroLinea;
             Origen = origen;
             Destino = destino;
             HoraSalida = horaSalida;
             HoraLlegada = horaLlegada;
-            IntervaloSalida = intervaloSalida;
-            Itinerario = itinerario;
+            IntervaloSalida = intervaloSalida;            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -23,7 +23,7 @@
 
         <!-- Botones para operaciones -->
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="5">
-            <!--<Button Content="Agregar" Command="{Binding NavigateToNewLineFormCommand}"/>-->
+            <Button Content="Agregar" Command="{Binding NavigateToNewLineFormCommand}"/>
             <Button Content="Modificar" Command="{Binding ModificarLineaCommand}"/>
             <Button Content="Eliminar" Command="{Binding EliminarLineaCommand}"/>
             <Button Content="Consultar" Command="{Binding ConsultarLineasCommand}"/>
