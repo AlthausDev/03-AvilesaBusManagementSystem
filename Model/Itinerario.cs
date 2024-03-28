@@ -4,11 +4,16 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace Project._04_LineasAutobuses.Model
-{  
-
+{
+    /// <summary>
+    /// Representa el itinerario de una línea de autobús con sus paradas y tiempos.
+    /// </summary>
     public class Itinerario : INotifyPropertyChanged
     {
         private long _numeroLinea;
+        /// <summary>
+        /// Obtiene o establece el número de la línea a la que se refiere el itinerario.
+        /// </summary>
         public long NumeroLinea
         {
             get { return _numeroLinea; }
@@ -22,8 +27,11 @@ namespace Project._04_LineasAutobuses.Model
             }
         }
 
-        private List<Parada> _paradas;
-        public List<Parada> Paradas
+        private ICollection<Parada> _paradas;
+        /// <summary>
+        /// Obtiene o establece las paradas por las que pasa el autobús en el itinerario.
+        /// </summary>
+        public ICollection<Parada> Paradas
         {
             get { return _paradas; }
             set
@@ -36,15 +44,18 @@ namespace Project._04_LineasAutobuses.Model
             }
         }
 
-        private TimeSpan _intervaloDesdeSalida;
-        public TimeSpan IntervaloDesdeSalida
+        private TimeSpan _tiempoRecorrido;
+        /// <summary>
+        /// Obtiene o establece el tiempo que se tarda en recorrer el itinerario desde la salida hasta el destino.
+        /// </summary>
+        public TimeSpan TiempoRecorrido
         {
-            get { return _intervaloDesdeSalida; }
+            get { return _tiempoRecorrido; }
             set
             {
-                if (_intervaloDesdeSalida != value)
+                if (_tiempoRecorrido != value)
                 {
-                    _intervaloDesdeSalida = value;
+                    _tiempoRecorrido = value;
                     OnPropertyChanged();
                 }
             }

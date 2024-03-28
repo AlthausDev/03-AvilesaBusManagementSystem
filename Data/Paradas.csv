@@ -1,4 +1,4 @@
-NumeroLinea;Municipio;HoraLlegada;OrdenParada
+NumeroLinea;Municipio;TiempoDesdeOrigen;OrdenParada
 1;Madrid;07:00:00;1
 1;Toledo;08:30:00;2
 1;Cuenca;10:00:00;3

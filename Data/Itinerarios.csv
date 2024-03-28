@@ -1,22 +1,19 @@
-NumeroLinea,Municipios,IntervaloDesdeSalida
-1;Zaragoza;00:30
-1;Tarragona;01:15
-1;Castellón;02:00
-2;Tarragona;01:00
-2;Castellón;02:30
-3;Murcia;00:45
-3;Córdoba;01:30
-4;Córdoba;01:15
-4;Burgos;02:30
-5;Santander;00:45
-5;Granada;01:30
-6;Almería;00:45
-6;Granada;01:30
-7;Zaragoza;00:45
-7;Huesca;01:30
-8;Teruel;00:45
-8;Valencia;01:30
-9;Jaén;00:45
-9;Sevilla;01:30
-10;Salamanca;00:45
-10;Valladolid;01:30
+NumeroLinea;TiempoRecorrido
+1;17h 0m
+2;8h 0m
+3;18h 0m
+4;10h 0m
+5;10h 0m
+6;8h 0m
+7;18h 0m
+8;10h 0m
+9;10h 0m
+10;8h 0m
+11;22h 0m
+12;10h 0m
+13;12h 0m
+14;8h 0m
+15;8h 0m
+16;8h 0m
+17;8h 0m
+18;8h 0m

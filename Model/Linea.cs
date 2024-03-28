@@ -5,9 +5,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Project._04_LineasAutobuses.Model
 {
+    /// <summary>
+    /// Representa una línea de autobús con sus detalles.
+    /// </summary>
     public class Linea : IEditableObject, INotifyPropertyChanged, IHasNumeroLinea
     {
         private long _numeroLinea;
+        /// <summary>
+        /// Obtiene o establece el número de la línea.
+        /// </summary>
         public long NumeroLinea
         {
             get { return _numeroLinea; }
@@ -21,8 +27,11 @@ namespace Project._04_LineasAutobuses.Model
             }
         }
 
-        private string _origen;
-        public string Origen
+        private Parada _origen;
+        /// <summary>
+        /// Obtiene o establece el municipio de origen de la línea.
+        /// </summary>
+        public Parada Origen
         {
             get { return _origen; }
             set
@@ -35,8 +44,11 @@ namespace Project._04_LineasAutobuses.Model
             }
         }
 
-        private string _destino;
-        public string Destino
+        private Parada _destino;
+        /// <summary>
+        /// Obtiene o establece el municipio de destino de la línea.
+        /// </summary>
+        public Parada Destino
         {
             get { return _destino; }
             set
@@ -49,58 +61,36 @@ namespace Project._04_LineasAutobuses.Model
             }
         }
 
-        private DateTime _horaSalida;
-        public DateTime HoraSalida
+        private DateTime _horaInicialSalida;
+        /// <summary>
+        /// Obtiene o establece la hora inicial de salida de los autobuses.
+        /// </summary>
+        public DateTime HoraInicialSalida
         {
-            get { return _horaSalida; }
+            get { return _horaInicialSalida; }
             set
             {
-                if (_horaSalida != value)
+                if (_horaInicialSalida != value)
                 {
-                    _horaSalida = value;
-                    OnPropertyChanged(nameof(HoraSalida));
+                    _horaInicialSalida = value;
+                    OnPropertyChanged(nameof(HoraInicialSalida));
                 }
             }
         }
 
-        private DateTime _horaLlegada;
-        public DateTime HoraLlegada
+        private TimeSpan _intervaloEntreBuses;
+        /// <summary>
+        /// Obtiene o establece el intervalo de tiempo entre la salida de los autobuses.
+        /// </summary>
+        public TimeSpan IntervaloEntreBuses
         {
-            get { return _horaLlegada; }
+            get { return _intervaloEntreBuses; }
             set
             {
-                if (_horaLlegada != value)
+                if (_intervaloEntreBuses != value)
                 {
-                    _horaLlegada = value;
-                    OnPropertyChanged(nameof(HoraLlegada));
-                }
-            }
-        }
-
-        private TimeSpan _intervaloSalida;
-        public TimeSpan IntervaloSalida
-        {
-            get { return _intervaloSalida; }
-            set
-            {
-                if (_intervaloSalida != value)
-                {
-                    _intervaloSalida = value;
-                    OnPropertyChanged(nameof(IntervaloSalida));
-                }
-            }
-        }
-
-        private Itinerario _itinerario;
-        public Itinerario Itinerario
-        {
-            get { return _itinerario; }
-            set
-            {
-                if (_itinerario != value)
-                {
-                    _itinerario = value;
-                    OnPropertyChanged(nameof(Itinerario));
+                    _intervaloEntreBuses = value;
+                    OnPropertyChanged(nameof(IntervaloEntreBuses));
                 }
             }
         }
@@ -109,15 +99,14 @@ namespace Project._04_LineasAutobuses.Model
         {
         }
 
-        public Linea(long numeroLinea, string origen, string destino,
-            DateTime horaSalida, DateTime horaLlegada, TimeSpan intervaloSalida)
+        public Linea(long numeroLinea, Parada municipioOrigen, Parada municipioDestino,
+            DateTime horaInicialSalida, TimeSpan intervaloEntreBuses)
         {
             NumeroLinea = numeroLinea;
-            Origen = origen;
-            Destino = destino;
-            HoraSalida = horaSalida;
-            HoraLlegada = horaLlegada;
-            IntervaloSalida = intervaloSalida;            
+            Origen = municipioOrigen;
+            Destino = municipioDestino;
+            HoraInicialSalida = horaInicialSalida;
+            IntervaloEntreBuses = intervaloEntreBuses;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -129,7 +118,6 @@ namespace Project._04_LineasAutobuses.Model
         {
             if (!_inEdit)
             {
-                // Crear una copia de seguridad del objeto actual
                 _backupCopy = this.MemberwiseClone() as Linea;
                 _inEdit = true;
             }
@@ -139,16 +127,13 @@ namespace Project._04_LineasAutobuses.Model
         {
             if (_inEdit)
             {
-                // Restaurar el objeto desde la copia de seguridad
                 if (_backupCopy != null)
                 {
                     NumeroLinea = _backupCopy.NumeroLinea;
                     Origen = _backupCopy.Origen;
                     Destino = _backupCopy.Destino;
-                    HoraSalida = _backupCopy.HoraSalida;
-                    HoraLlegada = _backupCopy.HoraLlegada;
-                    IntervaloSalida = _backupCopy.IntervaloSalida;
-                    Itinerario = _backupCopy.Itinerario;
+                    HoraInicialSalida = _backupCopy.HoraInicialSalida;
+                    IntervaloEntreBuses = _backupCopy.IntervaloEntreBuses;
                 }
                 _inEdit = false;
             }
@@ -158,7 +143,6 @@ namespace Project._04_LineasAutobuses.Model
         {
             if (_inEdit)
             {
-                // Eliminar la copia de seguridad ya que se ha confirmado la edición
                 _backupCopy = null;
                 _inEdit = false;
             }
@@ -170,3 +154,4 @@ namespace Project._04_LineasAutobuses.Model
         }
     }
 }
+

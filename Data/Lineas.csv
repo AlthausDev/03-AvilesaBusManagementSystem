@@ -1,4 +1,4 @@
-NumeroLinea;Origen;Destino;HoraSalida;HoraLlegada;IntervaloSalida
+NumeroLinea,Origen,Destino,HoraInicialSalida,IntervaloEntreBuses
 1;Madrid;Girona;07:00:00;00:00:00;01:30:00
 2;Figueres;Burgos;02:00:00;12:00:00;02:00:00
 3;Sevilla;Tarragona;08:00:00;02:00:00;01:45:00
