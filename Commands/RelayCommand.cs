@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Project._04_LineasAutobuses.Commands
 {
-
     public class RelayCommand : ICommand
     {
         private readonly Action _execute;
@@ -30,11 +25,5 @@ namespace Project._04_LineasAutobuses.Commands
         {
             _execute();
         }
-
-        public void RaiseCanExecuteChanged()
-        {
-            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
-        }
     }
-
 }

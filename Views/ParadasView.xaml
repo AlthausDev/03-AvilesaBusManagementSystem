@@ -39,7 +39,7 @@
                 <DataGridTextColumn Header="NUMERO DE LÍNEA" Binding="{Binding NumeroLinea}"/>
                 <DataGridTextColumn Header="NUMERO DE PARADA" Binding="{Binding OrdenParada}"/>
                 <DataGridTextColumn Header="MUNICIPIO" Binding="{Binding Municipio}"/>
-                <DataGridTextColumn Header="TIEMPO DESDE SALIDA" Binding="{Binding HoraLlegada}"/>
+                <DataGridTextColumn Header="TIEMPO DESDE SALIDA" Binding="{Binding TiempoDesdeOrigen}"/>
             </DataGrid.Columns>       
         </DataGrid>
 

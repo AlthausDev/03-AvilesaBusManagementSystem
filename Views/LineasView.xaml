@@ -39,11 +39,10 @@
         <DataGrid ItemsSource="{Binding Lineas}" SelectedItem="{Binding LineaSeleccionada}" AutoGenerateColumns="False" Style="{StaticResource DataGridStyles}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="NUMERO DE LÍNEA" Binding="{Binding NumeroLinea}"/>
-                <DataGridTextColumn Header="ORIGEN" Binding="{Binding Origen}"/>
-                <DataGridTextColumn Header="DESTINO" Binding="{Binding Destino}"/>
-                <DataGridTextColumn Header="SALIDA" Binding="{Binding HoraSalida, StringFormat=HH:mm}"/>
-                <DataGridTextColumn Header="LLEGADA" Binding="{Binding HoraLlegada, StringFormat=HH:mm}"/>
-                <DataGridTextColumn Header="INTERVALO" Binding="{Binding IntervaloSalida}"/>
+                <DataGridTextColumn Header="ORIGEN" Binding="{Binding Origen.Municipio}"/>
+                <DataGridTextColumn Header="DESTINO" Binding="{Binding Destino.Municipio}"/>
+                <DataGridTextColumn Header="SALIDA" Binding="{Binding HoraInicialSalida, StringFormat=HH:mm}"/>
+                <DataGridTextColumn Header="INTERVALO" Binding="{Binding IntervaloEntreBuses}"/>
             </DataGrid.Columns>
         </DataGrid>
 

@@ -39,7 +39,7 @@ namespace Project._04_LineasAutobuses.ViewModel
         {
             _lineaCsvDataService = lineaCsvDataService;
             _timePickerViewModel = new TimePickerViewModel();
-            GuardarLineaCommand = new RelayCommand(GuardarLinea, CanGuardarLinea);
+            //GuardarLineaCommand = new RelayCommand(GuardarLinea, CanGuardarLinea);
             CancelarCommand = new RelayCommand(Cancelar);
 
             Municipios = new ObservableCollection<string>();
@@ -80,43 +80,43 @@ namespace Project._04_LineasAutobuses.ViewModel
         }
 
 
-        private bool CanGuardarLinea()
-        {
-            return !string.IsNullOrWhiteSpace(NuevaLinea.Origen) &&
-                   !string.IsNullOrWhiteSpace(NuevaLinea.Destino) &&
-                   NuevaLinea.HoraSalida < NuevaLinea.HoraLlegada;
-        }
+        //private bool CanGuardarLinea()
+        //{
+        //    return !string.IsNullOrWhiteSpace(NuevaLinea.Origen) &&
+        //           !string.IsNullOrWhiteSpace(NuevaLinea.Destino) &&
+        //           NuevaLinea.HoraSalida < NuevaLinea.HoraLlegada;
+        //}
 
-        private void GuardarLinea()
-        {
-            try
-            {
-                long numeroLinea = NuevaLinea.NumeroLinea;
-                string origen = NuevaLinea.Origen;
-                string destino = NuevaLinea.Destino;
+        //private void GuardarLinea()
+        //{
+        //    try
+        //    {
+        //        long numeroLinea = NuevaLinea.NumeroLinea;
+        //        string origen = NuevaLinea.Origen;
+        //        string destino = NuevaLinea.Destino;
 
-                int horaSeleccionada = _timePickerViewModel.SelectedHour;
-                int minutoSeleccionado = _timePickerViewModel.SelectedMinute;
+        //        int horaSeleccionada = _timePickerViewModel.SelectedHour;
+        //        int minutoSeleccionado = _timePickerViewModel.SelectedMinute;
 
-                DateTime horaSalida = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, horaSeleccionada, minutoSeleccionado, 0);
-                DateTime horaLlegada = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, horaSeleccionada, minutoSeleccionado, 0);
-                TimeSpan intervaloSalida = NuevaLinea.IntervaloSalida;
+        //        DateTime horaSalida = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, horaSeleccionada, minutoSeleccionado, 0);
+        //        DateTime horaLlegada = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, horaSeleccionada, minutoSeleccionado, 0);
+        //        TimeSpan intervaloSalida = NuevaLinea.IntervaloSalida;
 
-                Linea nuevaLinea = new Linea(numeroLinea, origen, destino, horaSalida, horaLlegada, intervaloSalida);
+        //        Linea nuevaLinea = new Linea(numeroLinea, origen, destino, horaSalida, horaLlegada, intervaloSalida);
 
-                var csvDataService = new CsvDataService<Linea>("Lineas.csv");
-                var lineas = csvDataService.ReadFromCsv();
+        //        var csvDataService = new CsvDataService<Linea>("Lineas.csv");
+        //        var lineas = csvDataService.ReadFromCsv();
 
-                lineas.Add(nuevaLinea);
-                csvDataService.WriteToCsv(lineas);
+        //        lineas.Add(nuevaLinea);
+        //        csvDataService.WriteToCsv(lineas);
 
-                Debug.WriteLine("Nueva línea guardada exitosamente en Lineas.csv.");
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error al guardar la línea en Lineas.csv: {ex.Message}");
-            }
-        }
+        //        Debug.WriteLine("Nueva línea guardada exitosamente en Lineas.csv.");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Debug.WriteLine($"Error al guardar la línea en Lineas.csv: {ex.Message}");
+        //    }
+        //}
 
         private void Cancelar()
         {

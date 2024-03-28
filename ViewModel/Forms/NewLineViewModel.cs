@@ -77,8 +77,8 @@ namespace Project._04_LineasAutobuses.ViewModel.Forms
             var csvDataService = new CsvDataService<Linea>("Lineas.csv");
             _numeroLinea = csvDataService.GetLastLineaNumber() + 1;
 
-            GuardarLineaCommand = new RelayCommand(GuardarLinea);
-            CancelarCommand = new RelayCommand(Cancelar);
+            //GuardarLineaCommand = new RelayCommand(GuardarLinea);
+            //CancelarCommand = new RelayCommand(Cancelar);
         }
 
         private void GuardarLinea()
@@ -87,13 +87,13 @@ namespace Project._04_LineasAutobuses.ViewModel.Forms
             {
                 var nuevaLinea = new Linea
                 {
-                    NumeroLinea = this.NumeroLinea,
-                    Origen = this.Origen,
-                    Destino = this.Destino,
-                    HoraSalida = DateTime.Now,
-                    HoraLlegada = DateTime.Now.AddHours(1),
-                    IntervaloSalida = TimeSpan.FromMinutes(30),
-                    Itinerario = new Itinerario()
+                    //NumeroLinea = this.NumeroLinea,
+                    //Origen = this.Origen,
+                    //Destino = this.Destino,
+                    //HoraSalida = DateTime.Now,
+                    //HoraLlegada = DateTime.Now.AddHours(1),
+                    //IntervaloSalida = TimeSpan.FromMinutes(30),
+                    //Itinerario = new Itinerario()
                 };
 
                 var csvDataService = new CsvDataService<Linea>("Lineas.csv");

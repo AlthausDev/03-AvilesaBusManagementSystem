@@ -9,9 +9,12 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ItinerarioView">
- 
 
-        <Grid>
+    <Page.DataContext>
+        <viewmodel:ItinerarioViewModel/>
+    </Page.DataContext>
+
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -22,22 +25,22 @@
             <Button Content="AGREGAR" Command="{Binding AgregarItinerarioCommand}" 
             Style="{StaticResource normalBtn}"/>
             <Separator Margin="10"/>
-            <Button Content="MODIFICAR" Command="{Binding ModificarItinerarioCommand}" CommandParameter="{Binding LineaSeleccionada}" 
+            <Separator Margin="10"/>
+            <Button Content="MODIFICAR" Command="{Binding ModificarItinerarioCommand}" CommandParameter="{Binding ItinerarioSeleccionado}" 
             Style="{StaticResource normalBtn}"/>
             <Separator Margin="10"/>
-            <Button Content="ELIMINAR" Command="{Binding EliminarItinerarioCommand}" CommandParameter="{Binding LineaSeleccionada}" 
+            <Button Content="ELIMINAR" Command="{Binding EliminarItinerarioCommand}" CommandParameter="{Binding ItinerarioSeleccionado}" 
             Style="{StaticResource normalBtn}"/>
             <Separator Margin="10"/>
-            <Button Content="CONSULTAR" Command="{Binding ConsultarItinerariosCommand}"
+            <Button Content="CONSULTAR" Command="{Binding ConsultarItinerarioCommand}" CommandParameter="{Binding ItinerarioSeleccionado}"
             Style="{StaticResource normalBtn}"/>
         </ToolBar>
 
         <!-- DataGrid para mostrar los itinerarios -->
-        <DataGrid ItemsSource="{Binding Paradas}" AutoGenerateColumns="False" Style="{StaticResource DataGridStyles}">
+        <DataGrid ItemsSource="{Binding Itinerario}" AutoGenerateColumns="False" Style="{StaticResource DataGridStyles}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="NUMERO DE LÍNEA" Binding="{Binding NumeroLinea}"/>
-                <DataGridTextColumn Header="MUNICIPIO" Binding="{Binding Municipio}"/>
-                <DataGridTextColumn Header="HORA" Binding="{Binding HoraLlegada}"/>
+                <DataGridTextColumn Header="DURACION RECORRIDO COMPLETO" Binding="{Binding TiempoRecorrido}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

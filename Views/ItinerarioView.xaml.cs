@@ -21,10 +21,11 @@ namespace Project._04_LineasAutobuses.Features.Itinerario
     /// </summary>
     public partial class ItinerarioView : Page
     {
-        public ItinerarioView(ItinerarioViewModel viewModel, long NumeroLinea)
+        public ItinerarioView(ItinerarioViewModel viewModel)
         {
             InitializeComponent();
             DataContext = viewModel;
+
         }
     }
 }

@@ -10,24 +10,15 @@ using Project._04_LineasAutobuses.Views.Forms;
 using System.Windows;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using Project._04_LineasAutobuses.Services;
 
 namespace Project._04_LineasAutobuses.ViewModel
 {
     public class LineaViewModel : INotifyPropertyChanged
     {
-        private static LineaViewModel _instance;
 
-        public static LineaViewModel Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new LineaViewModel();
-                }
-                return _instance;
-            }
-        }
+        private readonly DataService _dataService;
+
 
         private ObservableCollection<Linea> _lineas;
         public ObservableCollection<Linea> Lineas
@@ -61,29 +52,15 @@ namespace Project._04_LineasAutobuses.ViewModel
 
         public LineaViewModel()
         {
-            Lineas = LoadLineas();
-          
+            _dataService = MainWindowViewModel.DataService;
+            Lineas = _dataService.Lineas;
+
             ModificarLineaCommand = new RelayCommand(ModificarLinea, CanModifyLinea);
             EliminarLineaCommand = new RelayCommand(EliminarLinea, IsLineSelected);
             ConsultarLineasCommand = new RelayCommand(ConsultarLineas, IsLineSelected);
-
         }
 
-        internal ObservableCollection<Linea> LoadLineas()
-        {
-            try
-            {
-                var lineasCsv = new CsvDataService<Linea>("Lineas.csv");
-                return lineasCsv.ReadFromCsv();               
-            }
 
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error al cargar las líneas: {ex.Message}");
-                return new ObservableCollection<Linea>();
-            }
-        }
-  
         private void ModificarLinea()
         {
             // Pendiente
@@ -112,16 +89,18 @@ namespace Project._04_LineasAutobuses.ViewModel
                 }
             }
         }
- 
+
 
         private void ConsultarLineas()
         {
             if (IsLineSelected())
             {
+                Debug.WriteLine($"ConsultarLineas - LineaSeleccionada: {LineaSeleccionada}");
                 MainWindowViewModel.NumeroLineaSeleccionada = LineaSeleccionada.NumeroLinea;
                 MainWindowViewModel.Instance.NavigateToParadasCommand.Execute(null);
-            }           
+            }
         }
+
 
         private bool IsLineSelected()
         {

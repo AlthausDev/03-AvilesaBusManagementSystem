@@ -1,6 +1,7 @@
 ﻿using Project._04_LineasAutobuses.Commands;
 using Project._04_LineasAutobuses.Features.Itinerario;
 using Project._04_LineasAutobuses.Features.Linea;
+using Project._04_LineasAutobuses.Services;
 using Project._04_LineasAutobuses.ViewModel.Forms;
 using Project._04_LineasAutobuses.Views;
 using Project._04_LineasAutobuses.Views.Forms;
@@ -15,21 +16,25 @@ namespace Project._04_LineasAutobuses.ViewModel
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
-        private readonly ItinerarioViewModel _itinerarioViewModel = new ItinerarioViewModel();
-        private readonly ParadasViewModel _paradasViewModel = new ParadasViewModel();
-
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private static readonly Lazy<MainWindowViewModel> instance = new Lazy<MainWindowViewModel>(() => new MainWindowViewModel());
-        public static long NumeroLineaSeleccionada { get; set; }
 
+        private static readonly DataService _dataService = new();
+        public static DataService DataService = _dataService;
+
+        private readonly ItinerarioViewModel _itinerarioViewModel = new ItinerarioViewModel();
+        private readonly ParadasViewModel _paradasViewModel = new ParadasViewModel();
+        private readonly LineaViewModel _lineaViewModel;
+
+        public static long NumeroLineaSeleccionada { get; set; }      
         public static MainWindowViewModel Instance => instance.Value;
 
         public ICommand NavigateToLineasCommand =>
-            new RelayCommand(() => NavigateToLineas());
+             new RelayCommand(() => NavigateToLineas());
 
         public ICommand NavigateToItinerarioCommand =>
-            new RelayCommand(() => NavigateTo(new ItinerarioView(_itinerarioViewModel, NumeroLineaSeleccionada)));
+            new RelayCommand(() => NavigateTo(new ItinerarioView(_itinerarioViewModel)));
 
         public ICommand NavigateToParadasCommand =>
             new RelayCommand(() => NavigateTo(new ParadasView(_paradasViewModel, NumeroLineaSeleccionada)));
@@ -42,11 +47,10 @@ namespace Project._04_LineasAutobuses.ViewModel
 
         public ICommand NavigateToNewLineFormCommand =>
             new RelayCommand(() => NavigateTo(new NewLineForm()));
-
+     
         private void NavigateToLineas()
         {
             var lineaViewModel = new LineaViewModel();
-            lineaViewModel.LoadLineas();
             NavigateTo(new LineasView(lineaViewModel));
         }
 
