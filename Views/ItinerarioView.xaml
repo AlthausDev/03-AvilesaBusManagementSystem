@@ -1,0 +1,48 @@
+﻿<Page x:Class="Project._04_LineasAutobuses.Features.Itinerario.ItinerarioView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Project._04_LineasAutobuses.Features.Itinerario"
+      xmlns:viewmodel="clr-namespace:Project._04_LineasAutobuses.ViewModel" 
+      d:DataContext="{d:DesignInstance Type=viewmodel:ItinerarioViewModel}"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ItinerarioView">
+
+    <Page.DataContext>
+        <viewmodel:ItinerarioViewModel/>
+    </Page.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Botones para operaciones -->
+        <ToolBar Grid.Row="0" Margin="5" ToolBarTray.IsLocked="True">
+            <Button Content="AGREGAR" Command="{Binding AgregarItinerarioCommand}" 
+            Style="{StaticResource normalBtn}"/>
+            <Separator Margin="10"/>
+            <Separator Margin="10"/>
+            <Button Content="MODIFICAR" Command="{Binding ModificarItinerarioCommand}" CommandParameter="{Binding ItinerarioSeleccionado}" 
+            Style="{StaticResource normalBtn}"/>
+            <Separator Margin="10"/>
+            <Button Content="ELIMINAR" Command="{Binding EliminarItinerarioCommand}" CommandParameter="{Binding ItinerarioSeleccionado}" 
+            Style="{StaticResource normalBtn}"/>
+            <Separator Margin="10"/>
+            <Button Content="CONSULTAR" Command="{Binding ConsultarItinerarioCommand}" CommandParameter="{Binding ItinerarioSeleccionado}"
+            Style="{StaticResource normalBtn}"/>
+        </ToolBar>
+
+        <!-- DataGrid para mostrar los itinerarios -->
+        <DataGrid ItemsSource="{Binding Itinerario}" SelectedItem="{Binding ItinerarioSeleccionado}" AutoGenerateColumns="False" Style="{StaticResource DataGridStyles}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="NUMERO DE LÍNEA" Binding="{Binding NumeroLinea}"/>
+                <DataGridTextColumn Header="NUMERO DE LÍNEA" Binding="{Binding Paradas}"/>
+                <DataGridTextColumn Header="DURACION RECORRIDO COMPLETO" Binding="{Binding TiempoRecorrido}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>
