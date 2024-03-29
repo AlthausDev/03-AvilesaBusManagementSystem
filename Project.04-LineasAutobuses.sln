@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.04-LineasAutobuses"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.04-LineasAutobuses.Tests", "..\Project.04-LineasAutobuses.Tests\Project.04-LineasAutobuses.Tests.csproj", "{479F0095-EFFD-47DC-971A-A9B6FC6E5341}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "LineasAutobus-AAS", "..\LineasAutobus-AAS\LineasAutobus-AAS.vdproj", "{AA585491-A9A5-4B13-A37D-3F0F2448E602}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,8 @@ Global
 		{479F0095-EFFD-47DC-971A-A9B6FC6E5341}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{479F0095-EFFD-47DC-971A-A9B6FC6E5341}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{479F0095-EFFD-47DC-971A-A9B6FC6E5341}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA585491-A9A5-4B13-A37D-3F0F2448E602}.Debug|Any CPU.ActiveCfg = Debug
+		{AA585491-A9A5-4B13-A37D-3F0F2448E602}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
