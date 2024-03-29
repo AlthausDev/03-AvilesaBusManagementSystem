@@ -37,9 +37,10 @@
         </ToolBar>
 
         <!-- DataGrid para mostrar los itinerarios -->
-        <DataGrid ItemsSource="{Binding Itinerario}" AutoGenerateColumns="False" Style="{StaticResource DataGridStyles}">
+        <DataGrid ItemsSource="{Binding Itinerario}" SelectedItem="{Binding ItinerarioSeleccionado}" AutoGenerateColumns="False" Style="{StaticResource DataGridStyles}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="NUMERO DE LÍNEA" Binding="{Binding NumeroLinea}"/>
+                <DataGridTextColumn Header="NUMERO DE LÍNEA" Binding="{Binding Paradas}"/>
                 <DataGridTextColumn Header="DURACION RECORRIDO COMPLETO" Binding="{Binding TiempoRecorrido}"/>
             </DataGrid.Columns>
         </DataGrid>

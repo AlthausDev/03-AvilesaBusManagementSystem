@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project._04_LineasAutobuses.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,8 +22,9 @@ namespace Project._04_LineasAutobuses.Views
     public partial class InicioView : Page
     {
         public InicioView()
-        {
+        {            
             InitializeComponent();
+            //DataContext = viewModel;
         }
     }
 }

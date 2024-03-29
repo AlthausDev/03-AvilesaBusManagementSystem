@@ -23,10 +23,10 @@
             <Button Content="AÑADIR" Command="{Binding AgregarParadaCommand}" 
                     Style="{StaticResource normalBtn}"/>
             <Separator Margin="10"/>
-            <Button Content="MODIFICAR" Command="{Binding ModificarParadaCommand}" CommandParameter="{Binding LineaSeleccionada}" 
+            <Button Content="MODIFICAR" Command="{Binding ModificarParadaCommand}" CommandParameter="{Binding NumeroLineaSeleccionada}" 
                     Style="{StaticResource normalBtn}"/>
             <Separator Margin="10"/>
-            <Button Content="ELIMINAR" Command="{Binding EliminarParadaCommand}" CommandParameter="{Binding LineaSeleccionada}" 
+            <Button Content="ELIMINAR" Command="{Binding EliminarParadaCommand}" CommandParameter="{Binding NumeroLineaSeleccionada}" 
                     Style="{StaticResource normalBtn}"/>
             <Separator Margin="10"/>
             <Button Content="ATRÁS" Command="{Binding VolverCommand}"

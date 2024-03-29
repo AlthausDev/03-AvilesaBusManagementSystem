@@ -26,6 +26,7 @@ namespace Project._04_LineasAutobuses.ViewModel
         private readonly ItinerarioViewModel _itinerarioViewModel = new ItinerarioViewModel();
         private readonly ParadasViewModel _paradasViewModel = new ParadasViewModel();
         private readonly LineaViewModel _lineaViewModel;
+        private readonly InicioViewModel _inicioViewModel = new InicioViewModel();
 
         public static long NumeroLineaSeleccionada { get; set; }      
         public static MainWindowViewModel Instance => instance.Value;

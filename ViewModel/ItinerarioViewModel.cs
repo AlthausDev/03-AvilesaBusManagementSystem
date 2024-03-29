@@ -27,15 +27,14 @@ namespace Project._04_LineasAutobuses.ViewModel
         }
 
 
-        private long _itinerarioSeleccionado;
-        public long ItinerarioSeleccionado
+        private Itinerario _itinerarioSeleccionado;
+        public Itinerario ItinerarioSeleccionado
         {
             get { return _itinerarioSeleccionado; }
             set
             {
                 _itinerarioSeleccionado = value;
                 OnPropertyChanged(nameof(ItinerarioSeleccionado));
-                CargarParadas();
             }
         }
 
@@ -74,43 +73,29 @@ namespace Project._04_LineasAutobuses.ViewModel
 
         }
 
-        //private void LoadItinerarios()
-        //{
-        //    try
-        //    {
-        //        Itinerario = _dataService.Itinerarios;
-
-        //        Debug.WriteLine($"Itinerarios cargados correctamente: {Itinerario.Count}");
-        //        foreach (var itinerario in Itinerario)
-        //        {
-        //            Debug.WriteLine($"Itinerario cargado: {itinerario}");
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Debug.WriteLine($"Error al cargar los itinerarios: {ex.Message}");
-        //        Itinerario = new ObservableCollection<Itinerario>();
-
-
-        //    }
-
-        //    OnPropertyChanged(nameof(Itinerario));
-        //}
-
-        internal ObservableCollection<Linea> LoadLineas()
+        private void LoadItinerarios()
         {
             try
             {
-                var lineasCsv = new CsvDataService<Linea>("Lineas.csv");
-                return lineasCsv.ReadFromCsv();
-            }
+                Itinerario = new ObservableCollection<Itinerario>(_dataService.Itinerarios);
 
+                Debug.WriteLine($"Itinerarios cargados correctamente: {Itinerario.Count}");
+                foreach (var itinerario in Itinerario)
+                {
+                    Debug.WriteLine($"Itinerario cargado: {itinerario}");
+                }
+            }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Error al cargar las líneas: {ex.Message}");
-                return new ObservableCollection<Linea>();
+                Debug.WriteLine($"Error al cargar los itinerarios: {ex.Message}");
+                Itinerario = new ObservableCollection<Itinerario>();
+
+
             }
+
+            OnPropertyChanged(nameof(Itinerario));
         }
+
 
         private void Add(object parameter)
         {
@@ -138,7 +123,7 @@ namespace Project._04_LineasAutobuses.ViewModel
             if (IsLineSelected())
             {
                 Debug.WriteLine($"Consultar - LineaSeleccionada: {ItinerarioSeleccionado}");
-                MainWindowViewModel.NumeroLineaSeleccionada = ItinerarioSeleccionado;
+                MainWindowViewModel.NumeroLineaSeleccionada = ItinerarioSeleccionado.NumeroLinea;
                 MainWindowViewModel.Instance.NavigateToParadasCommand.Execute(null);
             }
             else
@@ -147,59 +132,7 @@ namespace Project._04_LineasAutobuses.ViewModel
             }
         }
 
-        private ObservableCollection<Itinerario> LoadItinerarios()
-        {
-            try
-            {
-                var paradasCsv = new CsvDataService<Parada>("Paradas.csv");
-                var paradas = paradasCsv.ReadFromCsv();
-                var paradasPorLinea = paradas.GroupBy(p => p.NumeroLinea);
-
-                var itinerarios = new List<Itinerario>();
-                foreach (var grupoParadas in paradasPorLinea)
-                {
-                    var numeroLinea = grupoParadas.Key;
-                    var paradasDeLinea = grupoParadas.ToList();
-                    var intervaloDesdeSalida = paradasDeLinea.First().TiempoDesdeOrigen;
-
-                    var itinerario = new Itinerario
-                    {
-                        NumeroLinea = numeroLinea,
-                        Paradas = paradasDeLinea,
-                        TiempoRecorrido = intervaloDesdeSalida
-                    };
-
-                    itinerarios.Add(itinerario);
-                }
-
-                return new ObservableCollection<Itinerario>(itinerarios);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error al cargar los itinerarios: {ex.Message}");
-                return new ObservableCollection<Itinerario>();
-            }
-        }
-
-
-        private void CargarParadas()
-        {
-            try
-            {
-                var paradasCsv = new CsvDataService<Parada>("Paradas.csv");
-                var todasLasParadas = paradasCsv.ReadFromCsv();
-
-                Paradas = ItinerarioSeleccionado > 0 ?
-                    new ObservableCollection<Parada>(todasLasParadas.Where(p => p.NumeroLinea == ItinerarioSeleccionado)) :
-                    todasLasParadas;
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error al cargar las paradas: {ex.Message}");
-                Paradas = new ObservableCollection<Parada>();
-            }
-        }
-
+       
 
         private bool IsLineSelected()
         {
