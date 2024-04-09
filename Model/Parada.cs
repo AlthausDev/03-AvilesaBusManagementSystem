@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project._04_LineasAutobuses.Model
+namespace AvilesaBusManagementSystem.Model
 {
     /// <summary>
     /// Representa una parada en el itinerario de una línea de autobús.

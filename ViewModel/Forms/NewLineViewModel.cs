@@ -1,12 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Input;
-using Project._04_LineasAutobuses.Commands;
-using Project._04_LineasAutobuses.Features.Linea;
-using Project._04_LineasAutobuses.Model;
-using Project._04_LineasAutobuses.Utils;
+using AvilesaBusManagementSystem.Commands;
+using AvilesaBusManagementSystem.Features.Linea;
+using AvilesaBusManagementSystem.Model;
+using AvilesaBusManagementSystem.Utils;
 
-namespace Project._04_LineasAutobuses.ViewModel.Forms
+namespace AvilesaBusManagementSystem.ViewModel.Forms
 {
     public class NewLineViewModel : MainWindowViewModel
     {

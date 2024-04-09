@@ -1,18 +1,18 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
-using Project._04_LineasAutobuses.Model;
-using Project._04_LineasAutobuses.Utils;
+using AvilesaBusManagementSystem.Model;
+using AvilesaBusManagementSystem.Utils;
 using System;
-using Project._04_LineasAutobuses.Commands;
-using Project._04_LineasAutobuses.Views;
-using Project._04_LineasAutobuses.Views.Forms;
+using AvilesaBusManagementSystem.Commands;
+using AvilesaBusManagementSystem.Views;
+using AvilesaBusManagementSystem.Views.Forms;
 using System.Windows;
 using System.Windows.Shapes;
 using System.Diagnostics;
-using Project._04_LineasAutobuses.Services;
+using AvilesaBusManagementSystem.Services;
 
-namespace Project._04_LineasAutobuses.ViewModel
+namespace AvilesaBusManagementSystem.ViewModel
 {
     public class LineaViewModel : INotifyPropertyChanged
     {

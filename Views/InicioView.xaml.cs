@@ -1,9 +1,9 @@
-﻿using Project._04_LineasAutobuses.ViewModel;
+﻿using AvilesaBusManagementSystem.ViewModel;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
 
-namespace Project._04_LineasAutobuses.Views
+namespace AvilesaBusManagementSystem.Views
 {
     public partial class InicioView : Page
     {

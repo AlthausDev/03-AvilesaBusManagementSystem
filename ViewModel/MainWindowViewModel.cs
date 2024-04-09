@@ -1,10 +1,10 @@
-﻿using Project._04_LineasAutobuses.Commands;
-using Project._04_LineasAutobuses.Features.Itinerario;
-using Project._04_LineasAutobuses.Features.Linea;
-using Project._04_LineasAutobuses.Services;
-using Project._04_LineasAutobuses.ViewModel.Forms;
-using Project._04_LineasAutobuses.Views;
-using Project._04_LineasAutobuses.Views.Forms;
+﻿using AvilesaBusManagementSystem.Commands;
+using AvilesaBusManagementSystem.Features.Itinerario;
+using AvilesaBusManagementSystem.Features.Linea;
+using AvilesaBusManagementSystem.Services;
+using AvilesaBusManagementSystem.ViewModel.Forms;
+using AvilesaBusManagementSystem.Views;
+using AvilesaBusManagementSystem.Views.Forms;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -12,7 +12,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace Project._04_LineasAutobuses.ViewModel
+namespace AvilesaBusManagementSystem.ViewModel
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {

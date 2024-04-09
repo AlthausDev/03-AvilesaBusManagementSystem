@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Project._04_LineasAutobuses.Model
+namespace AvilesaBusManagementSystem.Model
 {
     /// <summary>
     /// Representa el itinerario de una línea de autobús con sus paradas y tiempos.

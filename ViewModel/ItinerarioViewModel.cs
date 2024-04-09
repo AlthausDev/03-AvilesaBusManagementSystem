@@ -3,12 +3,12 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Input;
-using Project._04_LineasAutobuses.Commands;
-using Project._04_LineasAutobuses.Model;
-using Project._04_LineasAutobuses.Services;
-using Project._04_LineasAutobuses.Utils;
+using AvilesaBusManagementSystem.Commands;
+using AvilesaBusManagementSystem.Model;
+using AvilesaBusManagementSystem.Services;
+using AvilesaBusManagementSystem.Utils;
 
-namespace Project._04_LineasAutobuses.ViewModel
+namespace AvilesaBusManagementSystem.ViewModel
 {
     public class ItinerarioViewModel : INotifyPropertyChanged
     {

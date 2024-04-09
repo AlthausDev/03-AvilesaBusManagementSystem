@@ -1,4 +1,4 @@
-﻿using Project._04_LineasAutobuses.ViewModel;
+﻿using AvilesaBusManagementSystem.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Project._04_LineasAutobuses.Views
+namespace AvilesaBusManagementSystem.Views
 {
     /// <summary>
     /// Lógica de interacción para ParadasView.xaml

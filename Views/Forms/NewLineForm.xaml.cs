@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Project._04_LineasAutobuses.Views.Forms
+namespace AvilesaBusManagementSystem.Views.Forms
 {
     /// <summary>
     /// Lógica de interacción para NewLineForm.xaml

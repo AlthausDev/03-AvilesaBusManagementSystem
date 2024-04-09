@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project._04_LineasAutobuses.ViewModel
+namespace AvilesaBusManagementSystem.ViewModel
 {
     public class TimePickerViewModel : INotifyPropertyChanged
     {

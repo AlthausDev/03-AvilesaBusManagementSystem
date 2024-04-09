@@ -6,11 +6,11 @@ using System.Globalization;
 using System.IO;
 using System.Windows.Input;
 using CsvHelper;
-using Project._04_LineasAutobuses.Commands;
-using Project._04_LineasAutobuses.Model;
-using Project._04_LineasAutobuses.Utils;
+using AvilesaBusManagementSystem.Commands;
+using AvilesaBusManagementSystem.Model;
+using AvilesaBusManagementSystem.Utils;
 
-namespace Project._04_LineasAutobuses.ViewModel
+namespace AvilesaBusManagementSystem.ViewModel
 {
     public class NewLineViewModel : INotifyPropertyChanged
     {

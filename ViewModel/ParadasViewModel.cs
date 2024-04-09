@@ -1,6 +1,6 @@
-﻿using Project._04_LineasAutobuses.Commands;
-using Project._04_LineasAutobuses.Model;
-using Project._04_LineasAutobuses.Utils;
+﻿using AvilesaBusManagementSystem.Commands;
+using AvilesaBusManagementSystem.Model;
+using AvilesaBusManagementSystem.Utils;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
 
-namespace Project._04_LineasAutobuses.ViewModel
+namespace AvilesaBusManagementSystem.ViewModel
 {
     public class ParadasViewModel : INotifyPropertyChanged
     {

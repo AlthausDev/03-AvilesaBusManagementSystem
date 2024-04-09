@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace Project._04_LineasAutobuses
+namespace AvilesaBusManagementSystem
 {
     /// <summary>
     /// Interaction logic for App.xaml

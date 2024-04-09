@@ -1,9 +1,9 @@
-﻿using Project._04_LineasAutobuses.Utils;
+﻿using AvilesaBusManagementSystem.Utils;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Project._04_LineasAutobuses.Model
+namespace AvilesaBusManagementSystem.Model
 {
     /// <summary>
     /// Representa una línea de autobús con sus detalles.

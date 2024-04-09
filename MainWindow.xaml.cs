@@ -1,8 +1,8 @@
-﻿using Project._04_LineasAutobuses.Features.Linea;
-using Project._04_LineasAutobuses.Model;
-using Project._04_LineasAutobuses.Utils;
-using Project._04_LineasAutobuses.ViewModel;
-using Project._04_LineasAutobuses.Views;
+﻿using AvilesaBusManagementSystem.Features.Linea;
+using AvilesaBusManagementSystem.Model;
+using AvilesaBusManagementSystem.Utils;
+using AvilesaBusManagementSystem.ViewModel;
+using AvilesaBusManagementSystem.Views;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Project._04_LineasAutobuses
+namespace AvilesaBusManagementSystem
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

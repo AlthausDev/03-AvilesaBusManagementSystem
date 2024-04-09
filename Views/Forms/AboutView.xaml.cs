@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Project._04_LineasAutobuses.Views
+namespace AvilesaBusManagementSystem.Views
 {
     /// <summary>
     /// Lógica de interacción para AboutView.xaml

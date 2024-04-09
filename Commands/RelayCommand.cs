@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace Project._04_LineasAutobuses.Commands
+namespace AvilesaBusManagementSystem.Commands
 {
     public class RelayCommand : ICommand
     {
