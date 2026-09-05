@@ -1,73 +1,37 @@
-# AvilesaBusManagementSystem: Sistema de Gesti髇 de Autobuses
+# Avilesa Bus Management System
 
-## Descripci髇
+Aplicaci贸n de escritorio en **C#/.NET con WPF** para gestionar l铆neas de autob煤s, itinerarios e informes dentro de un ejercicio de arquitectura MVVM.
 
-AvilesaBusManagementSystem es una aplicaci髇 desarrollada en C# con .NET y WPF, dise馻da para facilitar la gesti髇 integral de una empresa de autobuses. Este sistema permite la administraci髇 eficiente de l韓eas de autob鷖, itinerarios, y la generaci髇 de informes, ofreciendo una soluci髇 completa para la planificaci髇 y operaci髇 de servicios de transporte.
+## Funcionalidades
 
-## Caracter韘ticas Principales
+- Alta, modificaci贸n, consulta y eliminaci贸n de l铆neas.
+- Gesti贸n de itinerarios y paradas.
+- Persistencia en CSV.
+- Generaci贸n de informes con JasperReports.
+- Instalador personalizado.
+- Pruebas unitarias sobre l贸gica relevante.
 
-- **Gesti髇 de L韓eas de Autob鷖:**
-  - Permite crear, eliminar, modificar y consultar l韓eas de autob鷖, con informaci髇 detallada como n鷐ero de l韓ea, municipios de origen y destino, y horarios de salida.
+## Arquitectura y stack
 
-- **Gesti髇 de Itinerarios:**
-  - Administra los itinerarios de las l韓eas, incluyendo todas las paradas excepto la de salida, con detalles sobre los municipios y los intervalos de tiempo.
+- C# / .NET
+- WPF
+- MVVM
+- Patr贸n Command
+- CSV para persistencia
+- JasperReports para reporting
 
-- **Persistencia de Datos:**
-  - Almacena la informaci髇 en archivos CSV, facilitando la serializaci髇 y recuperaci髇 de datos para una gesti髇 eficaz.
-
-- **Informes:**
-  - Genera informes detallados utilizando JasperReports, como listados de l韓eas por hora de salida, l韓eas por municipio de origen e itinerarios completos por n鷐ero de l韓ea.
-
-- **Instalador Personalizado:**
-  - Incluye un instalador para la aplicaci髇 que permite opciones personalizadas, como la selecci髇 del directorio de instalaci髇.
-
-## Tecnolog韆s Utilizadas
-
-- **C# y .NET:**
-	- Base del desarrollo para construir una aplicaci髇 robusta y escalable.
-- **WPF (Windows Presentation Foundation):**
-	- Utilizado para desarrollar la interfaz gr醘ica, asegurando una experiencia de usuario interactiva y atractiva.
-- **Patr髇 MVVM (Model-View-ViewModel):** 
-	- Adoptado para estructurar la aplicaci髇, promoviendo una clara separaci髇 entre la l骻ica de presentaci髇 y la l骻ica de negocio, facilitando el mantenimiento y la prueba de la aplicaci髇.
-- **Patr髇 Command:** 
-	- Utilizado para encapsular la l骻ica de los comandos de la interfaz de usuario, permitiendo una gesti髇 centralizada de las acciones y eventos.
-- **JasperReports:**
-	- Empleado para la creaci髇 de informes basados en los datos de la aplicaci髇.
-- **CSV para Persistencia de Datos:**
-	- Formato elegido para la serializaci髇 de datos, compatible con la generaci髇 de informes.
-
-## Instalaci髇
-
-Para instalar BusManagementSystem en tu sistema:
-
-1. Descarga el instalador desde la secci髇 de lanzamientos del repositorio.
-2. Ejecuta el instalador y sigue las instrucciones en pantalla, eligiendo tu directorio de instalaci髇 preferido si deseas cambiarlo del predeterminado.
+El proyecto separa presentaci贸n, estado de vista y l贸gica de dominio para mantener una estructura razonablemente limpia dentro de una aplicaci贸n de escritorio.
 
 ## Uso
 
-Tras la instalaci髇, podr醩:
+El repositorio incluye el c贸digo fuente y los recursos necesarios para construir la aplicaci贸n. Tambi茅n se conserva el instalador utilizado durante el desarrollo original.
 
-1. Acceder a la pantalla principal para gestionar l韓eas e itinerarios.
-2. Utilizar las opciones proporcionadas para agregar, modificar o eliminar l韓eas e itinerarios.
-3. Generar y consultar informes a trav閟 de la interfaz de usuario.
+## Estado
 
-## Contribuci髇
-
-Si est醩 interesado en contribuir al proyecto BusManagementSystem:
-
-1. Haz un fork del repositorio.
-2. Clona tu fork y crea una nueva rama para tus cambios.
-3. Implementa tus mejoras o correcciones.
-4. Env韆 un pull request para su revisi髇.
-
-## Pruebas
-
-Para garantizar la calidad y funcionalidad del sistema, se han implementado pruebas unitarias sobre m閠odos clave de la aplicaci髇. Estos casos de prueba est醤 documentados y pueden ser ejecutados para verificar la integridad de las funcionalidades implementadas.
+Proyecto hist贸rico de formaci贸n, mantenido como referencia de WPF, MVVM y generaci贸n de informes.
 
 ## Licencia
 
-BusManagementSystem es un proyecto de c骴igo abierto licenciado bajo la [Licencia Creative Commons 4.0](LICENSE.md).
+Publicado bajo **Creative Commons Attribution-NonCommercial 4.0 International**. Consulta [`LICENSE.md`](LICENSE.md).
 
-## Contacto
-
-Para m醩 informaci髇, preguntas o colaboraciones, no dudes en contactar al equipo de desarrollo a trav閟 de [samuelalthaus@gmail.com](mailto:samuelalthaus@gmail.com).
+Si reutilizas c贸digo o material original del proyecto, conserva la atribuci贸n a **Sam Althaus / AlthausDev** conforme a la licencia.
