@@ -20,15 +20,17 @@ Aplicación de escritorio en **C#/.NET con WPF** para gestionar líneas de autob
 - CSV para persistencia
 - JasperReports para reporting
 
-El proyecto separa presentación, estado de vista y lógica de dominio para mantener una estructura razonablemente limpia dentro de una aplicación de escritorio.
+La aplicación separa presentación, estado de vista y lógica de dominio para mantener una estructura razonablemente limpia dentro de una aplicación de escritorio.
 
-## Uso
+## Puntos de diseño
 
-El repositorio incluye el código fuente y los recursos necesarios para construir la aplicación. También se conserva el instalador utilizado durante el desarrollo original.
+El proyecto resulta útil como referencia de una aplicación WPF clásica donde la UI no concentra toda la lógica: los `ViewModel`, comandos y servicios permiten mantener responsabilidades diferenciadas y facilitan las pruebas.
+
+La persistencia en CSV y la integración con JasperReports muestran además cómo conectar componentes externos sin convertir la capa de presentación en el centro del sistema.
 
 ## Estado
 
-Proyecto histórico de formación, mantenido como referencia de WPF, MVVM y generación de informes.
+Proyecto histórico de formación, mantenido como referencia de WPF, MVVM y generación de informes. El repositorio incluye código fuente y recursos del instalador utilizado durante el desarrollo original.
 
 ## Licencia
 
