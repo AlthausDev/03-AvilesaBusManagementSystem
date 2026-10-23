@@ -1,0 +1,21 @@
+name: WPF build
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '7.0.x'
+      - name: Restore
+        run: dotnet restore 03-AvilesaBusManagementSystem.csproj
+      - name: Build
+        run: dotnet build 03-AvilesaBusManagementSystem.csproj --no-restore --configuration Release
